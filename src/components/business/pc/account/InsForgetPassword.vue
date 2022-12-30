@@ -62,7 +62,7 @@ import { Form as ElForm, Input as ElInput, Message, FormItem, Button as ElButton
 })
 export default class InsForgetPassword extends Vue {
   ResetPwd: boolean = true;
-  ImgList:string='/images/pc/pcnormalbg.jpg';
+  // ImgList:string='/images/pc/pcnormalbg.jpg';
   ruleForm: any = {
     UserEmail: ''
   };
@@ -127,25 +127,23 @@ export default class InsForgetPassword extends Vue {
     width: 100%;
   }
   .TitleBg{
-    width: 500px;
-    border: 1px solid #ffffff;
-    height: 70px;
-    line-height: 70px;
-    margin: 0 auto;
-    padding: 10px;
-    margin-bottom: 20px;
-    top: 50%;
-    position: absolute;
-    transform: translateY(-50%);
+    width: 1200px;
+    margin: 50px auto;
+    // position: absolute;
+    // top: 210px;
+    // transition: all 0.3s;
+    // left: 50%;
+    // transform: translateX(-50%);
     .innerBoxText{
-      background:#ffffff;
-      color: #333333;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-      font-weight: 700;
-      font-family: 'Arial';
+        text-align: center;
+        font-size: 48px;
+        font-family: 'SourceHanSans-Heavy';
+        background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        -webkit-background-clip: text;
+        color: transparent;
+        // width: 310px;
+        // margin-left: 160px;
+        transition: all 0.3s;
     }
   }
 }

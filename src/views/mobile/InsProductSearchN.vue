@@ -1,14 +1,14 @@
 <template>
   <div id="container" class="ProductSearch">
         <div class="ProducBanner">
-            <ProductListSwiper :TitleName="$t('product.Producttitle')"/>
+            <ProductListSwiper/>
         </div>
         <div class="SearchSlide">
           <div class="leftSide">
             <advancedSearch @advancedChange="advancedChange" v-if="isAdvanced"  @closeSub="closeSub" @resetAll="resetAll" />
           </div>
         </div>
-      <div class="selectBar">
+      <!-- <div class="selectBar">
           <ul>
             <li @click="showSearchSlide"><span class="el-icon-s-operation"></span><b>{{$t('product.Screening')}}</b></li>
             <li>
@@ -18,7 +18,7 @@
               </select>
             </li>
           </ul>
-        </div>
+        </div> -->
     <!-- <advancedSearch :attrType="2"  @advancedChange="advancedChange" /> -->
 
     <div class="prolist-box">
@@ -29,7 +29,7 @@
              <h3 class="nocontentTips">{{$t('messageTips.NoContent')}}</h3>
         </div>
           <div ref="load" class="loading" @touchstart="loading" v-if="totalRecord>pageSize"><p>{{tips?$t('Action.LoadMore'):$t('home.Thatsall')}}</p></div>
-          <div class="loading" v-else>{{$t('home.Thatsall')}}</div>
+          <!-- <div class="loading" v-else>{{$t('home.Thatsall')}}</div> -->
     </div>
   </div>
 </template>
@@ -57,7 +57,7 @@ export default class InsProductSearch extends Vue {
   attrs: object[] = []; // 选中的产品属性数组
   searchCatalogs: number[] = []; // 选中的产品目录数组
   searchType: number = 1; // 搜索类型（0 => 叠加，1 => 筛选）
-  PriceItem:string='desc';
+  PriceItem:string='';
   isAdvanced: boolean = true;
 
   // 搜索关键词
@@ -200,12 +200,16 @@ export default class InsProductSearch extends Vue {
 .products_container{
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
 .product_item{
-    width: 50% !important;
-    padding:2rem 1rem 0;
+    width: 80% !important;
+    padding:0;
     box-sizing:border-box;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
 }
 
 .loading{

@@ -1,8 +1,10 @@
 <template>
   <div class="home" v-cloak>
-    <HomeBanner :initOptions="swiperOption" :page="'Home'" :initSwiper="true" class="banner" />
-    <HkPromotion />
+    <HomeBanner :page="'Home'" :initSwiper="true" class="banner" />
+    <PkConcept/>
+    <PkMark/>
     <HkBranch />
+    <HkPromotion />
     <HkLiveBox />
   </div>
 </template>
@@ -14,19 +16,21 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
     HomeBanner: () => import('@/components/base/mobile/InsBanner.vue'),
     HkPromotion: () => import('@/components/hkTasteBusiness/mobile/home/HkPromotion.vue'),
     HkBranch: () => import('@/components/hkTasteBusiness/mobile/home/HkBranch.vue'),
-    HkLiveBox: () => import('@/components/hkTasteBusiness/mobile/home/HkLiveBox.vue')
+    HkLiveBox: () => import('@/components/hkTasteBusiness/mobile/home/HkLiveBox.vue'),
+    PkConcept: () => import('@/components/hkTasteBusiness/mobile/home/PkConcept.vue'),
+    PkMark: () => import('@/components/hkTasteBusiness/mobile/home/PkMark.vue')
   }
 })
 export default class InsHome extends Vue {
-  swiperOption: object = {
-    autoplay: {
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    }
-  };
+  // swiperOption: object = {
+  //   autoplay: {
+  //     disableOnInteraction: false
+  //   },
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //     clickable: true
+  //   }
+  // };
 }
 </script>
 

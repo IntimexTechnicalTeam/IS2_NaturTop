@@ -1,8 +1,10 @@
 <template>
   <div class="home" v-cloak>
-    <HomeBanner :initOptions="swiperOption" :page="'Home'" :initSwiper="true" class="banner" />
-    <HkPromotion />
+    <HomeBanner :page="'Home'" :initSwiper="true" class="banner" />
+    <PkConcept/>
+    <PkMark/>
     <HkBranch />
+    <HkPromotion />
     <HkLiveBox />
   </div>
 </template>
@@ -15,16 +17,18 @@ import api from '@/sdk/api/Api.ts';
     HomeBanner: () => import(/* webpackChunkName: "home" */ '@/components/base/pc/InsBanner.vue'),
     HkPromotion: () => import(/* webpackChunkName: "home" */ '@/components/hkTasteBusiness/pc/home/HkPromotion.vue'),
     HkBranch: () => import(/* webpackChunkName: "home" */ '@/components/hkTasteBusiness/pc/home/HkBranch.vue'),
-    HkLiveBox: () => import(/* webpackChunkName: "home" */ '@/components/hkTasteBusiness/pc/home/HkLiveBox.vue')
+    HkLiveBox: () => import(/* webpackChunkName: "home" */ '@/components/hkTasteBusiness/pc/home/HkLiveBox.vue'),
+    PkConcept: () => import(/* webpackChunkName: "home" */ '@/components/hkTasteBusiness/pc/home/PkConcept.vue'),
+    PkMark: () => import(/* webpackChunkName: "home" */ '@/components/hkTasteBusiness/pc/home/PkMark.vue')
   }
 })
 export default class InsHome extends Vue {
-  swiperOption: object = {
+  swiperOptionhome: object = {
     autoplay: {
       disableOnInteraction: false
     },
     pagination: {
-      el: '.swiper-pagination',
+      el: '.swiper-pagination.swiper-pagination-home',
       clickable: true
     }
   };

@@ -1,18 +1,21 @@
 <template>
     <div class="header-box">
-      <div class="headerTop">
+      <!-- <div class="headerTop">
           <ins-login />
           <ins-fav  />
           <shopcart class="shoppingcart" />
           <CodeSelect class="header-code" />
           <ins-lang-switch class="headerLang" />
-      </div>
+      </div> -->
         <div class="flex-box">
-        <ins-logo />
-        <!-- <ins-menu /> -->
-        <!-- <ins-menu :layout="1" /> -->
-          <img class="slide-menu" src="/images/mobile/Mobile-index_05.png" @click="showSlideMenu" v-show="!this.$store.state.isShowMenu" />
-          <img class="close-meun" src="/images/mobile/out.png" @click="showSlideMenu" v-show="this.$store.state.isShowMenu"  />
+          <ins-logo />
+          <!-- <ins-menu /> -->
+          <!-- <ins-menu :layout="1" /> -->
+          <div class="right">
+            <shopcart class="shoppingcart" />
+            <img class="slide-menu" src="/images/mobile/Mobile-index_05.png" @click="showSlideMenu" v-show="!this.$store.state.isShowMenu" />
+
+          </div>
         </div>
     </div>
 </template>
@@ -58,23 +61,30 @@ export default class DefaultHeader extends Vue {
 
 <style scoped lang="less">
     .header-box {
+      background-color: #d9b672;
       .flex-box {
-        height: 7rem;
-        background-color: @positive_color;
+        height: 6rem;
+        background-color: #d9b672;
         position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0 1.5rem;
-
+        .right{
+          display: flex;
+          align-items: center;
+          /deep/ .shoppingcart{
+            margin-right: 1.5rem;
+          }
+        }
         .logo {
-          width: 15rem;
-          margin: 0 auto;
+          // width: 15rem;
+          // margin: 0 auto;
         }
 
         .slide-menu {
           cursor: pointer;
-          width: 3rem;
+          width: 2.5rem;
         }
         .close-meun {
           cursor: pointer;

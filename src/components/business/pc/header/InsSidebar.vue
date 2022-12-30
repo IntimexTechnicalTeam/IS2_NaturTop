@@ -1,28 +1,31 @@
 <template>
   <div class="siderbarContainer">
     <div id="sidebar" v-show="isShow">
-      <a href="javascript:void(0);" @click="toTop"
-        ><img src="/static/Image/mobile/home/down.png"
-      /></a>
+
       <a href="javascript:void(0);" @click="show = !show"
         ><img src="/static/Image/mobile/home/down2.png"
       /></a>
+
       <span v-show="show">
+        <a href="tel:85298765436" class="fb-button" target="_blank"
+          ><img src="/static/Image/mobile/home/ig.png"
+        /></a>
+        <a href="javascript:;" class="livechat" @click="showLivechat"
+          ><img src="/static/Image/mobile/home/facebook.png"
+        /></a>
+
+        <a href="mailto:info@hktaste.com.hk" class="fb-button"
+          ><img src="/static/Image/mobile/home/news.png"
+        /></a>
         <a
           href="https://api.whatsapp.com/send?phone=8529876%205436&text=%E6%88%91%E6%83%B3%E6%9F%A5%E8%AF%A2%E4%B8%80%E4%B8%8B"
           target="_blank"
           ><img src="/static/Image/mobile/home/whatsapp.png"
         /></a>
-        <a href="javascript:;" class="livechat" @click="showLivechat"
-          ><img src="/static/Image/mobile/home/facebook.png"
-        /></a>
-        <a href="tel:85298765436" class="fb-button" target="_blank"
-          ><img src="/static/Image/mobile/home/phone.png"
-        /></a>
-        <a href="mailto:info@hktaste.com.hk" class="fb-button"
-          ><img src="/static/Image/mobile/home/news.png"
-        /></a>
       </span>
+      <a href="javascript:void(0);" @click="toTop"
+        ><img src="/static/Image/mobile/home/down.png"
+      /></a>
     </div>
     <!-- 显示livechat -->
     <div class="fb-livechat">
@@ -145,6 +148,7 @@ export default class InsSidebar extends Vue {
   -moz-box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
   -o-box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
 }
+
 @media screen and (max-width: 768px) {
   .fb-widget {
     width: 320px;
@@ -208,13 +212,29 @@ export default class InsSidebar extends Vue {
   font-family: sans-serif;
 }
 #sidebar {
-  img {
-    width: 4rem;
+  a{
+    margin-top: 10px;
+    display: block;
   }
+  > a {
+    display: flex;
+    justify-content: center;
+    img{
+      width: 48px;
+      display: block;
+    }
+  }
+  span{
+    img {
+      width: 60px;
+      display: block;
+    }
+  }
+
   position: fixed;
   right: 0 !important;
   bottom: 60px;
-  width: 4rem;
+  width: 60px;
   // text-align: center;
   z-index: 997;
   line-height: 0;
@@ -242,5 +262,16 @@ export default class InsSidebar extends Vue {
 }
 a {
   line-height: 0;
+}
+@media screen and (max-width: 640px){
+  #sidebar{
+    width: 4rem;
+    > a img{
+      width: 3rem;
+    }
+    span img{
+      width: 4rem;
+    }
+  }
 }
 </style>

@@ -63,7 +63,7 @@ import { Form as ElForm, Input as ElInput, Message, FormItem, Button as ElBotton
 })
 export default class InsForgetPassword extends Vue {
   ResetPwd: boolean = true;
-  ImgList:string='/images/mobile/MobileNormalBg.jpg';
+  // ImgList:string='/images/mobile/MobileNormalBg.jpg';
   ruleForm: any = {
     UserEmail: ''
   };
@@ -128,25 +128,19 @@ export default class InsForgetPassword extends Vue {
     width: 100%;
   }
   .TitleBg{
-    width: 75%;
-    border: 1px solid #ffffff;
-    height: 4.5rem;
-    line-height: 4.5rem;
-    margin: 0 auto;
-    padding: 10px;
-    margin-bottom: 20px;
-    top: 50%;
-    position: absolute;
-    transform: translateY(-50%);
+    // top: 12rem;
+    // position: absolute;
+    // left: 5rem;
+    margin: 2rem auto;
     .innerBoxText{
-      background:#ffffff;
-      color: #333333;
+      text-align: center;
+      font-size: 2.4rem;
+      font-family: 'SourceHanSans-Heavy';
+      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      -webkit-background-clip: text;
+      color: transparent;
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
-      font-weight: 700;
-      font-family: 'Arial';
     }
   }
 }
@@ -157,25 +151,7 @@ export default class InsForgetPassword extends Vue {
   align-items: center;
   position: relative;
 }
-.TitleBg{
-  width: 75%;
-  height: 4.5rem;
-  border:1px solid #ffffff;
-  margin: 0 auto;
-  padding: .8rem;
-  .innerBoxText{
-    width: 100%;
-    height: 100%;
-    background:#ffffff;
-    color: #333333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    font-weight: 700;
-    font-family: 'Arial';
-  }
-}
+
 #container {
   width: 100%;
   display: inline-block;

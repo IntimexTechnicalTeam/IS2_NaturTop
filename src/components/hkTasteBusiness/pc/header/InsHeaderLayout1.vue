@@ -3,6 +3,11 @@
   <!-- 正常菜单 -->
   <div class="headerBg">
       <div class="headerTop">
+        <!-- logo开始 -->
+      <div class="logoBox">
+          <a href="/"><img src="/images/pc/pcindex_09.png"></a>
+      </div>
+      <!-- logo结束 -->
           <div class="inner">
               <!-- 搜索框开始 -->
               <div class="search-box">
@@ -30,11 +35,7 @@
               <!-- 切换语言结束 -->
           </div>
       </div>
-      <!-- logo开始 -->
-      <div class="logoBox">
-          <a href="/"><img src="/images/pc/pcindex_09.png"></a>
-      </div>
-      <!-- logo结束 -->
+
       <!-- 导航栏开始 -->
       <Menu />
       <!-- 导航栏结束 -->

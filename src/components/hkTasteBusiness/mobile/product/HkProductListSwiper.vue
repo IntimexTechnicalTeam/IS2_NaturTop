@@ -1,14 +1,16 @@
 <template>
-  <div class="productSearchSwiper">
-    <p class="gradient"></p>
-    <div class="swiper-container swiper-container-hot">
-        <swiper :options="swiperOption" ref="mySwiper">
-        <!-- slides -->
-        <swiperSlide v-for="(slide, index) in hotProducts" :key="index">
+  <div class="productSearchSwiper" :class="{'Engap': $Storage.get('locale') === 'E'}">
+    <div class="DetailTitle">
+        <div v-for="(slide, index) in hotProducts" :key="index">
           <img :src="slide.Image" class="BannerImg">
-        </swiperSlide>
-        </swiper>
-        <div class="TitleBg"><div class="innerBoxText">{{TitleName}}</div></div>
+        </div>
+        <div class="TitleBg"><div class="innerBoxText">{{hotTitleName}}</div></div>
+    </div>
+    <div class="productSearchtitle">
+      <h2>{{hotTitleName}}</h2>
+      <p>
+        {{hotDuct}}
+      </p>
     </div>
   </div>
 </template>
@@ -19,6 +21,8 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper/src';
 export default class PkProductListSwiper extends Vue {
     hotProducts:any[]=[];
     bannerImg: string = '';
+    hotTitleName:string='';
+    hotDuct: string='';
     @Prop() private TitleName!: string;
     swiperOption: object = {
       pagination: {
@@ -28,6 +32,8 @@ export default class PkProductListSwiper extends Vue {
     };
     loadHotProducts () {
       this.$Api.promotion.getPromotion('PromProductList', 0).then((result) => {
+        this.hotTitleName = result.Promotion.Name;
+        this.hotDuct = result.Promotion.Desc;
         if (result.Promotion.BannerList.length > 0) {
           this.hotProducts = result.Promotion.BannerList;
         }
@@ -58,34 +64,70 @@ export default class PkProductListSwiper extends Vue {
     width: 100%;
     display: block;
 }
-.TitleBg{
-  width: 75%;
-  height: 4.5rem;
-  border:1px solid #ffffff;
-  margin: 0 auto;
-  padding: 0.8rem;
-  position: absolute;
-  bottom: 10%;
-  left:50%;
-  z-index: 999;
-  transform: translateX(-50%) translateY(-50%);
-  .innerBoxText{
+.DetailTitle{
+  width: 100%;
+  display: flex;
+  flex-wrap:wrap;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  img{
     width: 100%;
-    height: 100%;
-    background: #ffffff;
-    color: #333333;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    font-weight: 700;
-    font-family: 'Arial';
   }
+  .TitleBg{
+    top: 12rem;
+    position: absolute;
+    left: 5rem;
+    .innerBoxText{
+      text-align: center;
+      font-size: 2.4rem;
+      font-family: 'SourceHanSans-Heavy';
+      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      -webkit-background-clip: text;
+      color: transparent;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .TitleBgNo{
+    position: static;
+    margin: 2rem auto;
+  }
+}
+.productSearchtitle{
+  >h2{
+    text-align: center;
+
+    font-size: 2rem;
+    font-family: 'SourceHanSans-Heavy';
+    background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+    -webkit-background-clip: text;
+    color: transparent;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 2px;
+  }
+  p{
+    font-family: 'SourceHanSans-Regular';
+    font-size: 1.2rem;
+    color: #666666;
+    text-align: center;
+    word-break: break-word;
+    padding: 0 1rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 2rem;
+  }
+}
+.Engap{
+  .DetailTitle .TitleBg{
+    top: 13rem;
+    position: absolute;
+    left: 3rem;
+    width: 13.4rem;
+    .innerBoxText{
+      font-size: 1.8rem;
+    }
+  }
+
 }
 </style>

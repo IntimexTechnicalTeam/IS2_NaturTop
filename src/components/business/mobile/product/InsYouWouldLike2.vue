@@ -1,13 +1,15 @@
 <template>
-  <div :style="styla" v-if="ShowItemsLength>0">
+  <div class="YouWouldLike" :style="styla" v-if="ShowItemsLength>0">
     <div class="in_slider_title">{{title}}</div>
-    <swiper :options="SwiperOption" ref="mySwiper">
+    <swiper :options="SwiperOptionwould" ref="mySwiper">
       <!-- slides -->
       <swiperSlide v-for="(item,idx) in InnerItems" :key="idx">
-        <inProductWindow :item="item" :imgStyla="imgStyla" styla="width:70%;margin:0 auto;padding-bottom:2rem;margin-bottom: 3rem;"></inProductWindow>
+        <inProductWindow :item="item" :imgStyla="imgStyla" styla="width:100%;margin:0 auto;"></inProductWindow>
       </swiperSlide>
-      <div class="swiper-scrollbar"   slot="scrollbar"></div>
+      <!-- <div class="swiper-scrollbar"   slot="scrollbar"></div> -->
+
     </swiper>
+    <div class="swiper-pagination swiper-pagination-would"></div>
   </div>
 </template>
 <script lang="ts">
@@ -24,15 +26,17 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper/src';
 })
 export default class InsYouWouldLike2 extends Vue {
   // data
-  private SwiperOption = {
+  private SwiperOptionwould = {
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     },
-    scrollbar: {
-      el: '.swiper-scrollbar'
+    pagination: {
+      el: '.swiper-pagination.swiper-pagination-would',
+      clickable: true
     },
-    slidesPerView: 1
+    slidesPerView: 2,
+    spaceBetween: 15
   };
   private InnerItems: YouWouldLike[] = [];
   private InnerItemsCopy: YouWouldLike[] = [];
@@ -80,11 +84,58 @@ export default class InsYouWouldLike2 extends Vue {
       height: 10px!important;
 }
 </style>
-<style scoped>
+<style scoped lang="less">
+.YouWouldLike{
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+  /deep/ .swiper-pagination{
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -3rem;
+    transition: all 0.3s;
+    .swiper-pagination-bullet{
+      width: 10px;
+      height: 10px;
+      background-color: #cda975;
+      margin: 0 3px;
+      opacity: 1;
+      transition: all 0.3s;
+    }
+    .swiper-pagination-bullet-active{
+      width: 36px;
+      height: 10px;
+      border-radius: 5px;
+    }
+
+  }
+  /deep/ .in_pdWindow_item_text {
+    width: 96%;
+    margin: 0 auto;
+
+    p{
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+  }
+  /deep/ .in_pdWindow_item_title{
+      font-size: 1.2rem;
+      margin-bottom: 0;
+    }
+}
 .in_slider_title {
   text-align: center;
   margin: 4rem 0;
-  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  font-family: 'SourceHanSans-Heavy';
+  background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+  -webkit-background-clip: text;
+  color: transparent;
+  display: flex;
+  justify-content: center;
 }
 .in_slider_page_container {
   box-sizing: border-box;

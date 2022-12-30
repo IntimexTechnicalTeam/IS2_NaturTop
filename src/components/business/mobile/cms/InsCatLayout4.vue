@@ -1,26 +1,42 @@
 <template>
     <div class="cms-list">
-        <ul>
-            <li v-for="(cms,index) in cmsData" :key="index">
-                <router-link :to="'/cms/content/'+cms.Id">
-                    <div class="cover">
-                        <img :src="cms.Cover" alt=""/>
-                    </div>
-                    <div class="introduce">
-                        <p class="title">{{cms.Title}}</p>
-                        <p class="createDate">{{cms.CreateDate}}</p>
-                        <p class="desc">{{cms.Desc}}</p>
-                        <p class="viewMore"><span>{{$t('Message.ViewDetail')}}</span></p>
-                    </div>
-                </router-link>
-            </li>
-        </ul>
-
-        <div class="loading_box" ref="load" @touchstart="loading" v-if="pager.totalRecord > pager.pageSize">
-            <span class="loading_title">{{tips?$t('Action.LoadMore'):$t('home.Thatsall')}}</span>
+        <div class="pathwayList" v-if="cmsCatId == 40113">
+            <ul>
+                <li v-for="(cms,index) in cmsData" :key="index">
+                    <a href="javascript:;" @click="toUrl(cms)">
+                        <div class="cover">
+                            <img :src="cms.Cover" alt=""/>
+                        </div>
+                        <div class="introduce">
+                            <p class="title">{{cms.Title}}</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="loading_box" v-else>
-            <span class="loading_title">{{$t('home.Thatsall')}}</span>
+        <div v-else>
+            <ul>
+                <li v-for="(cms,index) in cmsData" :key="index">
+                    <router-link :to="'/cms/content/'+cms.Id">
+                        <div class="cover">
+                            <img :src="cms.Cover" alt=""/>
+                        </div>
+                        <div class="introduce">
+                            <p class="title">{{cms.Title}}</p>
+                            <p class="createDate">{{cms.CreateDate}}</p>
+                            <p class="desc">{{cms.Desc}}</p>
+                            <p class="viewMore"><span>{{$t('Message.ViewDetail')}}</span></p>
+                        </div>
+                    </router-link>
+                </li>
+            </ul>
+
+            <div class="loading_box" ref="load" @touchstart="loading" v-if="pager.totalRecord > pager.pageSize">
+                <span class="loading_title">{{tips?$t('Action.LoadMore'):$t('home.Thatsall')}}</span>
+            </div>
+            <div class="loading_box" v-else>
+                <span class="loading_title">{{$t('home.Thatsall')}}</span>
+            </div>
         </div>
     </div>
 </template>
@@ -32,9 +48,18 @@ import { Loading } from 'element-ui';
 export default class InsCatLayout1 extends Vue {
     @Prop({ default: () => [] }) private cmsData!: object[]; // cms内容列表数据
     @Prop({ default: () => {} }) private pager!: any; // 分頁器數據
+    @Prop({ default: () => {} }) private cmsCatId!: object;
 
     private tips:boolean = true;
     private LoadingInstance!: any;
+
+    toUrl (n) {
+        if (!n.IsOpenWindows && n.Url) {
+        window.location.href = n.Url;
+        } else if (n.IsOpenWindows && n.Url) {
+        window.open(n.Url);
+        }
+    }
 
     loading (e) {
       if (this.tips) {
@@ -181,6 +206,62 @@ export default class InsCatLayout1 extends Vue {
         z-index: 1;
         font-size: 1.5rem;
         color: #787878;
+        }
+    }
+    .pathwayList{
+        margin-bottom: 30px;
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            li{
+                width: 48%;
+                margin-right: 4%;
+                margin-bottom: 2rem;
+                overflow: hidden;
+                float: left;
+                &:nth-child(2n){
+                    margin-right: 0;
+                }
+
+                a{
+                    border-radius: 6px;
+                    border:1px solid #cccccc;
+                    padding: 1rem 1.5rem;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    transition: all 0.3s;
+                    font-size: 1.2rem;
+                    .cover{
+                        img{
+                            width: 100%;
+                            height: 6rem;
+                            object-fit: contain;
+                            display: block;
+                        }
+                    }
+                    .introduce {
+                        padding-bottom: 0;
+                        .title{
+                            border: none;
+                            text-align: center;
+                            padding-bottom: 0;
+                            margin-bottom: 0;
+                            transition: all 0.3s;
+                            font-size: 1.2rem;
+                            color: #333333;
+                        }
+                    }
+                }
+                &:hover{
+                    a{
+                        background-color: #fff8ea;
+                        border: 1px solid transparent;
+                        .title{
+                            color: #debf82;
+                        }
+                    }
+                }
+            }
         }
     }
 }

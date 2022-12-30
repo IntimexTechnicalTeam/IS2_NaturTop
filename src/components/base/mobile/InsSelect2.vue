@@ -108,10 +108,10 @@ export default class InsSelect2 extends Vue {
   text-align: left;
 }
 .in_select_main {
-  font-size: 1rem;
+  font-size: 1.2rem;
   height: 100%;
   line-height: 3rem;
-  color: rgba(0, 0, 0, 0.2);
+  color: #333;
   padding: 0 1rem;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);

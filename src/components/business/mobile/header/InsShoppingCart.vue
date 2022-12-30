@@ -174,7 +174,7 @@ export default class InsShoppingCart extends Vue {
   padding: 14px 14px 30px 14px;
   background-color: #fff;
   border: 1px solid #e6e6e6;
-  top: 3.5rem;
+  top: 6rem;
 }
 
 .top-cart-detail {
@@ -186,8 +186,8 @@ export default class InsShoppingCart extends Vue {
 .window-top {
   position: absolute;
   // right: 77px;
-  top: 2.9rem;
-  width: 24px;
+  top: 3rem;
+  width: 34px;
   height: 18px;
   background: url(../../../../assets/Images/window-top.png) no-repeat center center;
 }

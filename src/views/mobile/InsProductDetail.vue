@@ -6,22 +6,23 @@
 
     </div>
     <div v-else>
-    <div class="productDetail_main" :style="'flex-wrap: wrap;'">
+    <div class="productDetail_main fix" :style="'flex-wrap: wrap;'">
       <ProductSwiper width="100%"  :imgList="ImgList" :ProductTitleName="ProductTitleName"></ProductSwiper>
       <PkProductInfo :panelDetail="PanelDetail"  :ProductSku="ProductSku" :AddPrice="getNewsPrice" width="100%" style="margin-top:2rem;"></PkProductInfo>
-      <div class="ProductRate"><Rate  v-model="Score" disabled  disabled-void-color="#5f6548" disabled-void-icon-class="el-icon-star-off"></Rate></div>
-      <PkProductDetailCate :source="ExtAttrList" :cateTree="CatalogTree" width="100%" style="margin-top:2rem;"></PkProductDetailCate>
+      <!-- <div class="ProductRate"><Rate  v-model="Score" disabled  disabled-void-color="#5f6548" disabled-void-icon-class="el-icon-star-off"></Rate></div> -->
+      <PkProductDetailCate :source="ExtAttrList" :cateTree="CatalogTree" width="100%"></PkProductDetailCate>
       <inPanel :panelDetail="PanelDetail" width="100%" :ProductSku="ProductSku"  @getPrice="showPrice" itemscopestyle="margin-top:2rem;"></inPanel>
+      <HkProductShare></HkProductShare>
     </div>
     <div class="tab_warpper">
-      <div class="tab_header">
-        <div class="detail_title" @click="IsDetail=true" v-bind:class="{isActive:IsDetail}">{{$t('product.ProductIntroduction')}}</div>
-        <div class="comment_title" @click="IsDetail=false" v-bind:class="{isActive:!IsDetail}">{{$t('product.comments.title')}}</div>
+      <div class="tab_header fix">
+        <div class="detail_title" @click="IsDetail=true" v-bind:class="{isActive:IsDetail}">{{$t('product.detail')}}</div>
+        <!-- <div class="comment_title" @click="IsDetail=false" v-bind:class="{isActive:!IsDetail}">{{$t('product.comments.title')}}</div> -->
       </div>
       <div class="clear"></div>
       <div class="product_detail" v-html="Tabs.Detail" v-show="IsDetail && Tabs.Detail!=''"></div>
       <div class="product_detail" v-show="IsDetail" v-if="Tabs.Detail==''"><h3>{{$t('messageTips.NoContent')}}</h3></div>
-      <inComments :ProductSku="ProductSku" v-show="!IsDetail"></inComments>
+      <!-- <inComments :ProductSku="ProductSku" v-show="!IsDetail"></inComments> -->
     </div>
     <div class id="tab"></div>
     <inYouWouldLike
@@ -51,6 +52,7 @@ import inComments from '@/components/business/mobile/product/InsComments.vue';
 import inProductUpOrDown from '@/components/business/mobile/product/InsProductUpOrDown.vue';
 import ProductListSwiper from '@/components/hkTasteBusiness/mobile/product/HkProductListSwiper.vue';
 import { Rate } from 'element-ui';
+import HkProductShare from '@/components/hkTasteBusiness/mobile/product/HkProductShare.vue';
 @Component({ components: {
   inPreview,
   inPanel,
@@ -63,7 +65,8 @@ import { Rate } from 'element-ui';
   PkProductInfo,
   inProductUpOrDown,
   ProductListSwiper,
-  Rate
+  Rate,
+  HkProductShare
 } })
 export default class ProductDetail extends Vue {
   private Slider: YouWouldLike[] = [];
@@ -143,13 +146,13 @@ export default class ProductDetail extends Vue {
 }
 </script>
 <style  lang="less">
-.product_detail p,.product_detail h3{
-  padding:2rem;
-}
-.product_detail h3{
-  font-size:1.4rem;
-  font-weight:100;
-}
+// .product_detail p,.product_detail h3{
+//   padding:2rem;
+// }
+// .product_detail h3{
+//   font-size:1.4rem;
+//   font-weight:100;
+// }
 .el-rate__decimal {
     display: inline-block;
     overflow: hidden;
@@ -172,32 +175,39 @@ export default class ProductDetail extends Vue {
     display: flex;
     float: right;
     align-items: baseline;
-    height: 3rem;
+    // height: 3rem;
     .huge{
       display: inline-block;
-      &:nth-child(1){
-        font-size: 1.6rem;
-      }
-      &:nth-child(2){
-        font-size:2rem;
-        color:#b40606;
-        font-weight: 700;
-      }
+      font-size:2rem;
+      color:#e27368;
+      font-family: 'SourceHanSans-Regular';
+      // &:nth-child(1){
+      //   font-size: 1.6rem;
+      // }
+      // &:nth-child(2){
+      //   font-size:2rem;
+      //   color:#b40606;
+      //   font-weight: 700;
+      // }
     }
   }
   .primePricesMain{
     .huge{
       display: inline-block;
-      &:nth-child(1){
-        font-size: 1.2rem;
-        color: #999;
-        text-decoration: line-through;
-      }
-      &:nth-child(2){
-        font-size: 1.2rem;
-        color: #999;
-        text-decoration: line-through;
-      }
+      font-size: 1.2rem;
+      color: #999;
+      text-decoration: line-through;
+      font-family: 'SourceHanSans-Regular';
+      // &:nth-child(1){
+      //   font-size: 1.2rem;
+      //   color: #999;
+      //   text-decoration: line-through;
+      // }
+      // &:nth-child(2){
+      //   font-size: 1.2rem;
+      //   color: #999;
+      //   text-decoration: line-through;
+      // }
     }
   }
 }
@@ -215,9 +225,10 @@ export default class ProductDetail extends Vue {
   margin-top: .5rem;
 }
 .isActive{
-  color:#FFF!important;
-  background: #262626 !important;
-  border:1px solid #262626!important;
+  color:#000!important;
+  font-weight: bold;
+  // background: #262626 !important;
+  // border:1px solid #262626!important;
 }
 .productDetail_container {
   width: 100%;
@@ -233,39 +244,50 @@ export default class ProductDetail extends Vue {
     font-size: 1.4rem;
   }
   .tab_warpper{
-    margin: 5rem 0 0 0;
-    .tab_header{
-      width: 95%;
+      border: 1px solid #666666;
+      border-radius: 5px;
+      width: 90%;
       margin:0 auto;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    .tab_header{
+      background-color: #f7f7f7;
       .comment_title,.detail_title{
-        width: 48%;
+        // width: 52%;
         color:#000000;
         text-align: center;
         font-size: 1.4rem;
         padding-top: 1rem;
         padding-bottom: 1rem;
+        padding-left: 2rem;
         float: left;
         border-radius: 5px;
       }
       .detail_title{
         margin-right: calc(4% - 4px);
-         border:1px solid #000;
+        //  border:1px solid #000;
       }
       .comment_title{
-        border:1px solid #000;
+        // border:1px solid #000;
       }
     }
     .product_detail{
-      width: 95%;
+      width: 100%;
       margin:0 auto;
       background: #fff;
-      border: 1px solid #000;
-      min-height: 20rem;
+      // border: 1px solid #000;
+      min-height: 34rem;
       border-radius: 5px;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      p{
-        font-size: 1.6rem;
+      // margin-top: 1rem;
+      // margin-bottom: 1rem;
+      /deep/ p{
+        font-size: 1.3rem;
+        img{
+          width: 100%;
+          display: block;
+          margin: 0 auto;
+        }
      }
     }
   }

@@ -42,7 +42,7 @@ export default class InsSlideMenu extends Vue {
     this.direction = this.FrontE.slideMenu.direction || 'top';
     this.width = this.direction !== 'top' && this.FrontE.slideMenu.width ? this.FrontE.slideMenu.width : '100%';
     if (!this.Embedded) {
-      this.height = this.direction === 'top' && this.FrontE.slideMenu.height ? this.FrontE.slideMenu.height : '100%';
+      // this.height = this.direction === 'top' && this.FrontE.slideMenu.height ? this.FrontE.slideMenu.height : '100%';
     } else {
       // console.log((document.getElementById('header') as HTMLElement).clientHeight, '頭部高度id');
       // console.log((document.querySelector('.header-box') as HTMLElement).clientHeight, '頭部高度querySelector');
@@ -75,10 +75,10 @@ export default class InsSlideMenu extends Vue {
 
         console.log(bodyHeight, 'bodyHeight', top, 'top');
 
-        this.height = (bodyHeight - top) + 'px';
-        (document.querySelector('.sidebar-container') as HTMLElement).style.top = top + 'px';
-        (document.querySelector('.drawer-bg') as HTMLElement).style.height = (bodyHeight - top) + 'px';
-        (document.querySelector('.drawer-bg') as HTMLElement).style.top = top + 'px';
+        // this.height = (bodyHeight - top) + 'px';
+        // (document.querySelector('.sidebar-container') as HTMLElement).style.top = top + 'px';
+        // (document.querySelector('.drawer-bg') as HTMLElement).style.height = (bodyHeight - top) + 'px';
+        // (document.querySelector('.drawer-bg') as HTMLElement).style.top = top + 'px';
       }
     } else {
       document.body.style.overflow = 'auto';
@@ -102,7 +102,7 @@ export default class InsSlideMenu extends Vue {
   transition: transform .28s,-webkit-transform .28s;
   position: fixed;
   background-color: #fff;
-  z-index: 1000;
+  z-index: 10000;
 
   &.left {
     top: 0;
@@ -124,6 +124,7 @@ export default class InsSlideMenu extends Vue {
   &.right {
     top: 0;
     right: 0;
+    height: 100%;
 
     &.hiddenMenu {
         transform: translate3d(100%, 0, 0);

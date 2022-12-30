@@ -141,7 +141,7 @@ export default class InsSelect2 extends Vue {
   font-size: 12px;
   height: 100%;
   line-height: 32px;
-  color: rgba(0, 0, 0, 0.2);
+  color: #333;
   padding: 0 20px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);

@@ -491,7 +491,8 @@ export default {
     Resetall: 'Reset all filters',
     PriceHL: 'Price from high to low',
     PriceLH: 'Price from low  to high',
-    Thatsall: 'That is all'
+    Thatsall: 'That is all',
+    shopping: 'Know More'
   },
   Action: {
     ReturnHomePage: 'Return Homepage',

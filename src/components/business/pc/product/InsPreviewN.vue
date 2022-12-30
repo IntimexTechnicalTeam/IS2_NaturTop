@@ -43,7 +43,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper/src';
 import 'viewerjs/dist/viewer.css';
 // import { component as Viewer } from 'v-viewer';
 
-import Viewer from 'v-viewerc/component.vue';
+import Viewer from 'v-viewer/src/component.vue';
 // Vue.use(Viewer, {
 //   defaultOptions: {
 //     zIndex: 9999
@@ -216,10 +216,12 @@ SwiperOption: object = {
     right:0px!important;
 }
 .PcVersionPreview  .swiper-button-prev, .PcVersionPreview  .swiper-button-next{
-    width: 40px!important;
-    height: 40px!important;
-    background-size:100%!important;
+    width: 30px!important;
+    height: 100px!important;
+    background-size: 100%!important;
     outline: 0;
+    margin: 0;
+    top: 5px;
 }
 .PcVersionPreview{
   .swiper-father{
@@ -246,13 +248,15 @@ SwiperOption: object = {
 .in_preview_img_warpper {
   overflow: hidden;
     // border: 1px solid;
-    margin: 20px 0;
+    // margin: 20px 0;
     line-height: 0;
+    border: 1px solid #999999;
+    box-sizing: border-box;
 }
 .in_preview_img_warpper > img {
   width: 100%;
   cursor: pointer;
-  // height: 333px;
+  height: 520px;
 }
 .in_preview_img_mirror {
   position: absolute;
@@ -288,9 +292,9 @@ SwiperOption: object = {
   box-sizing: border-box;
   display: flex;
   flex-wrap: nowrap;
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
-  padding: 10px;
+  padding: 0 0;
   user-select: none;
 }
 .in_slider_page_item{
@@ -300,10 +304,10 @@ SwiperOption: object = {
   border-radius: 2px;
   padding: 5px;
   .item{
-    border: solid 1px#f0f0f0;
+    border: solid 1px#cccccc;
     padding: 0;
     &:hover{
-      border:1px solid #f0864c;
+      border:1px solid #d9b672;
     }
   }
 }

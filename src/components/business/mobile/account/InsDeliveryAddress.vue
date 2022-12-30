@@ -361,17 +361,7 @@ export default class InsDeliveryAddress extends Vue {
       if (valid) {
         this.$Api.delivery.saveAddress(this.AddForm).then((result) => {
           this.getAddress();
-          this.AddForm = {
-            FirstName: '',
-            LastName: '',
-            Mobile: '',
-            Phone: '',
-            PostalCode: '',
-            CountryId: '',
-            Province: '',
-            Address: '',
-            Default: ''
-          };
+          (this.$refs.AddForm as Form).resetFields();
           _this.$message({
             message: this.$t('Message.SavedSuccessfully') as string,
             type: 'success',
@@ -416,7 +406,7 @@ export default class InsDeliveryAddress extends Vue {
   font-size: 20px!important;
 }
 .MembercenterMobile .MemberInfoMain .el-form-item__label{
-    width: 25%;
+    width: 100%;
     float: left;
     color: #161616 !important;
     padding: 0px;
@@ -425,11 +415,11 @@ export default class InsDeliveryAddress extends Vue {
     height: 40px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     text-align: center;
 }
 .MembercenterMobile .MemberInfoMain .el-input{
-  width: 75%!important;
+  width: 100%!important;
 }
 .MembercenterMobile .MemberInfoMain .el-checkbox__label{
     display: inline-block;
@@ -465,24 +455,24 @@ export default class InsDeliveryAddress extends Vue {
 .MembercenterMobile .MemberInfoMain .el-button{
     width: 100%;
     display: block;
-    background: #333333;
+    background: #d9b672;
     background-size: 100%;
     height: 4rem;
     border:0px!important;
 }
 .MembercenterMobile .MemberInfoMain .el-input.is-disabled .el-input__inner{
-      border: 1px solid #535353!important;
+      border: 1px solid #DCDFE6!important;
       background-color: transparent!important;
       color:#161616!important;
       border: none;
-      border-radius: 0px;
+      border-radius: 4px;
 }
 .MembercenterMobile .MemberInfoMain  .el-input__inner{
-      border: 1px solid #535353!important;
+      border: 1px solid #DCDFE6!important;
       background-color: transparent!important;
       color:#161616!important;
       border: none;
-      border-radius: 0px;
+      border-radius: 4px;
 }
 .MembercenterMobile .MemberInfoMain .el-radio__input.is-checked .el-radio__inner{
     border-color: #333333;
@@ -492,22 +482,25 @@ export default class InsDeliveryAddress extends Vue {
   color: #606266;
 }
 .MembercenterMobile .MemberInfoMain .el-select{
-  width: 75%!important;
+  width: 100%!important;
 }
 .MembercenterMobile .MemberInfoMain .el-select >.el-input{
   width: 100%!important;
-  border: 1px solid #000;
+  // border: 1px solid #000;
+  box-sizing: border-box;
 }
 .MembercenterMobile .MemberInfoMain .el-select >.el-input .el-input__inner{
-  border: 0px!important;
+  // border: 0px!important;
 }
 .MembercenterMobile .MemberInfoMain .el-select .el-input__suffix{
-  background: #333333;
-  color:#fff;
+  background: transparent;
+  color:#333333;
   right: 0px!important;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 .MembercenterMobile .MemberInfoMain .el-select .el-input .el-select__caret{
-  color:#fff!important;
+  color:#C0C4CC!important;
 }
 .MembercenterMobile .MemberInfoMain input::-webkit-input-placeholder {
         color:#999!important;
@@ -672,11 +665,14 @@ export default class InsDeliveryAddress extends Vue {
     width: 100%;
     margin: 0 auto;
     display: block;
-    background: #333;
+    background: #d9b672;
     background-size: cover;
     border:0px!important;
 }
 .delivery-address .el-button > span{
   font-size: 20px!important;
+}
+.delivery-address /deep/ .el-form-item{
+  margin-bottom: 2rem;
 }
 </style>

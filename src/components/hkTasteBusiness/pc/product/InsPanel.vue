@@ -1,7 +1,7 @@
 <template>
   <div class="in_panel_warpper PcVersion" :style="warpperStyle">
     <div class="in_panel_content">
-      <inSelect
+      <!-- <inSelect
         v-for="(item,index) in panelDetail.AttrList"
         :items="item"
         :key="index"
@@ -10,8 +10,8 @@
         styla="padding: 0 10px;"
         @input="changeAttr"
         @changePrice="AdditionalPrice"
-      ></inSelect>
-      <inNum  :label="$i18n.t('product.countTitle')" v-model="ProductInfor.Qty" :v="ProductInfor.Qty" size="middle" :min="panelDetail.MinPurQty" :max="panelDetail.MaxPurQty" styla="padding: 0 10px;"></inNum>
+      ></inSelect> -->
+      <inNum v-model="ProductInfor.Qty" :v="ProductInfor.Qty" size="middle" :min="panelDetail.MinPurQty" :max="panelDetail.MaxPurQty" styla="padding: 0 0;"></inNum>
       <div class="in_panel_iconList">
         <div v-for="item in panelDetail.icons" :key="item.id" class="in_panel_icon_warpper">
           <img :src="item.src" />
@@ -22,16 +22,16 @@
       <ElButton @click="click('addToCart')" class="actionBtn addToCart" :loading="Loading">{{$t('product.addToCart')}}</ElButton>
       <ElButton @click="click('buy')" class="actionBtn buyNow" :loading="buyLoading">{{$t('product.buy')}}</ElButton>
     </div> -->
-    <div class="in_panel_footer" v-if="panelDetail.ProductStatus!==-1 && panelDetail.SoldOutAttrComboList.length===0">
+    <div class="in_panel_footer in_panel_footer_top" v-if="panelDetail.ProductStatus!==-1 && panelDetail.SoldOutAttrComboList.length===0">
       <inButton
         v-for="item in panelDetail.button"
        :loading="(item.action === 'addToCart')?Loading:buyLoading"
         :nama="$i18n.t('product.'+item.nama)"
         :key="item.nama"
-        width="48%"
         :type="(item.action === 'addToCart' || item.action === 'favorite' || item.action === 'buy') ? 'primary' : 'error'"
         :action="item.action"
         @click="click"
+        :class="{'CartBtn' : item.action == 'addToCart', 'BuyBtn' : item.action == 'buy'}"
       ></inButton>
     </div>
     <div class="in_panel_footer" v-else>
@@ -238,7 +238,7 @@ export default class Panel extends Vue {
 }
 .PcVersion .in_panel_footer button:hover{
   transform: translateY(-3px);
-  border:1px solid #262626!important;
+  // border:1px solid #262626!important;
 }
 .PcVersion .in_panel_footer .el-button+.el-button{
   margin-left:20px!important;
@@ -259,19 +259,28 @@ export default class Panel extends Vue {
   box-sizing: border-box;
 }
 .PcVersion  .el-input__inner{
-  border:none!important;
+  // border:none!important;
   box-sizing: border-box;
-  width: 4rem;
+  // width: 4rem;
 }
 .PcVersion  .el-input-number__decrease,.PcVersion .el-input-number__increase{
-    width: 2rem !important;
-    border: 1px solid #000;
-    border-radius: 5px;
-    height: 2rem;
-    line-height: 2rem;
+    width: 38px !important;
+    // border: 1px solid #000;
+    // border-radius: 5px;
+    height: 38px;
+    line-height: 38px;
+    background-color: transparent;
+
+}
+.PcVersion  .el-input-number__decrease{
+  border-right: 1px solid #333333;
+}
+.PcVersion  .el-input-number__increase{
+  border-left: 1px solid #333333;
 }
 .PcVersion .el-input-number__decrease i, .el-input-number__increase i{
-  color:#000;
+  color:#d9b672;
+  font-weight: bold;
 }
 .PcVersion  .el-input-number{
   width: auto!important;
@@ -280,12 +289,16 @@ export default class Panel extends Vue {
   padding-left: 0rem;
   padding-right: 0rem;
   background: transparent!important;
-  width: 10rem;
-  line-height: 2rem!important;
-  height: 2rem!important;
-  color:#000!important;
+  width: 160px;
+  line-height: 40px!important;
+  height: 40px!important;
+  color:#666666!important;
   font-weight: 500;
-  font-size: 1.4rem;
+  font-size: 20px;
+  border: 1px solid #333333;
+  outline: none;
+  font-weight: bold;
+  font-family: 'SourceHanSans-Regular';
 }
 </style>
 <style lang="less" scoped>
@@ -376,20 +389,23 @@ export default class Panel extends Vue {
 }
     .in_panel_footer {
       .CartBtn{
-        height: 50px;
+        height: 70px;
         font-size: 20px;
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid #333333;
+        border: 1px solid #d9b672;
         color: #fff;
-        border-radius: 3px;
+        border-radius: 5px;
         transition: .1s;
         text-transform: uppercase;
         width: 48%;
         background-color: unset;
-        color: #333333;
         margin-right: 4%;
+        background-color: #d9b672;
+        position: relative;
+        overflow: hidden;
+        padding-left: 30px;
         &:disabled{
           cursor:not-allowed;
           background: #ccc;
@@ -398,49 +414,83 @@ export default class Panel extends Vue {
            &:hover{
            transform: translateY(0px)!important;
           }
+        }
+        &::after{
+          content: '';
+          width: 34px;
+          height: 28px;
+          background: url(/images/pc/CartBtn.png) no-repeat;
+          position: absolute;
+          left: 40px;
+        }
+
+      }
+      .BuyBtn{
+        height: 70px;
+        font-size: 20px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #e27368;
+        background-color: #e27368;
+        color: #fff;
+        border-radius: 5px;
+        transition: .1s;
+        text-transform: uppercase;
+        width: 48%;
+        position: relative;
+        overflow: hidden;
+        padding-left: 30px;
+        &:disabled{
+          cursor:not-allowed;
+          background: #ccc;
+          border: 1px solid #ccc;
+          color: #333333;
+           &:hover{
+           transform: translateY(0px)!important;
+          }
+        }
+        &::after{
+          content: '';
+          width: 34px;
+          height: 28px;
+          background: url(/images/pc/BuyBtn.png) no-repeat;
+          position: absolute;
+          left: 40px;
+        }
+      }
+      // .in_btn {
+      //   height: 60px;
+      //   font-size: 24px;
+      //   color: @base_color;
+      //   display: inline-flex;
+      //   justify-content: center;
+      //   align-items: center;
+      //   border: 1px solid @base_color;
+      //   background-color: unset;
+      //   border-radius: 5px;
+      //   transition: .1s;
+      //   &:hover{
+      //     transform: translateY(-3px);
+      //   }
+      //   // &:first-child {
+      //   //   background-color: @base_color;
+      //   //   color: #fff;
+      //   //   margin-right: 4%;
+      //   // }
+      // }
+    }
+    .in_panel_footer_top{
+      .CartBtn{
+        padding-left: 0;
+        /deep/ span{
+          padding-left: 20px;
         }
       }
       .BuyBtn{
-        height: 50px;
-        font-size: 20px;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #333333;
-        background-color: #333333;
-        color: #fff;
-        border-radius: 3px;
-        transition: .1s;
-        text-transform: uppercase;
-        width: 48%;
-        &:disabled{
-          cursor:not-allowed;
-          background: #ccc;
-          border: 1px solid #ccc;
-          color: #333333;
-           &:hover{
-           transform: translateY(0px)!important;
-          }
-        }
-      }
-      .in_btn {
-        height: 60px;
-        font-size: 24px;
-        color: @base_color;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid @base_color;
-        background-color: unset;
-        border-radius: 5px;
-        transition: .1s;
-        &:hover{
-          transform: translateY(-3px);
-        }
-        &:first-child {
-          background-color: @base_color;
-          color: #fff;
-          margin-right: 4%;
+        padding-left: 0;
+        /deep/ span{
+          padding-left: 20px;
         }
       }
     }

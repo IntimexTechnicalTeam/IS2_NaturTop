@@ -3,7 +3,7 @@
     <transition name="slide">
       <div key="1" v-if="!waiting" style="display:flex;">
         <div class="swiperbg">
-          <swiper :options="swiperOption" v-if="initSwiper">
+          <swiper :options="swiperOptionhome" v-if="initSwiper">
             <!-- slides -->
             <swiperSlide
               v-for="(slide, index) in bannerList"
@@ -15,17 +15,17 @@
             </a>
             </swiperSlide>
             <!-- Optional controls -->
-            <div class="swiper-pagination" slot="pagination"></div>
-            <div
+            <div class="swiper-pagination swiper-pagination-home" slot="pagination"></div>
+            <!-- <div
               class="swiper-button-prev"
               slot="button-prev"
-              v-if="swiperOption.navigation && swiperOption.navigation.nextEl"
+              v-if="swiperOptionhome.navigation && swiperOptionhome.navigation.nextEl"
             ></div>
             <div
               class="swiper-button-next"
               slot="button-next"
-              v-if="swiperOption.navigation && swiperOption.navigation.prevEl"
-            ></div>
+              v-if="swiperOptionhome.navigation && swiperOptionhome.navigation.prevEl"
+            ></div> -->
           </swiper>
         </div>
       </div>
@@ -58,17 +58,15 @@ export default class InsBanner extends Vue {
   bannerList: object[] = [];
   bannerImg: string = '';
   isload: boolean = false;
-  swiperOption: object = {
+  swiperOptionhome: object = {
+    effect: 'fade',
     autoplay: {
+      delay: 5000,
       disableOnInteraction: false
     },
     pagination: {
-      el: '.swiper-pagination',
+      el: '.swiper-pagination.swiper-pagination-home',
       clickable: true
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
     }
   };
 
@@ -95,7 +93,7 @@ export default class InsBanner extends Vue {
 
   created () {
     if (this.initOptions) {
-      this.swiperOption = this.initOptions;
+      this.swiperOptionhome = this.initOptions;
     }
   }
 
@@ -124,13 +122,13 @@ export default class InsBanner extends Vue {
 </script>
 <style lang="less">
 .pcbanner .swiper-pagination-bullet{
-  width: 12px!important;
-  height: 12px!important;
+  width: 14px!important;
+  height: 14px!important;
   background: #fff;
   opacity: 1;
 }
 .pcbanner .swiper-pagination-bullet-active{
-  background: #666666!important;
+  background: #cda975!important;
 }
 </style>
 <style scoped lang="less">
@@ -148,6 +146,13 @@ export default class InsBanner extends Vue {
 }
 .swiper-container-indexMain img {
   width: 100%;
+}
+.swiper-pagination-bullets{
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+    text-align: right;
 }
 .faker{
   width: 100vw;

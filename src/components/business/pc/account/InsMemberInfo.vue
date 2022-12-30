@@ -298,6 +298,8 @@ export default class InsMemberInfo extends Vue {
   background: #333333;
   color:#fff;
   right: 0px!important;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 .MemberPc .el-select .el-input .el-select__caret{
   color:#fff!important;
@@ -331,10 +333,10 @@ export default class InsMemberInfo extends Vue {
   margin-left: 0px!important;
 }
 .MemberInfoMain .el-button{
-    background: #333333;
+    background: #d9b672;
     border: none;
     display: block;
-    border-radius: 20px;
+    border-radius: 5px;
     width: 60%;
     float: left;
     margin-left: 25%;

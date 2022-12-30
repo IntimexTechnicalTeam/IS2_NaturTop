@@ -22,7 +22,7 @@ export const pRoutes = [
     name: 'main',
     component: () => import(/* webpackChunkName: "main" */ './platform/pc/index.vue'),
     meta: {
-      title: 'style3主页'
+      title: '诺崔特 Natur Top'
     },
     children: [
       {

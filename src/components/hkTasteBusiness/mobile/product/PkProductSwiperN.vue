@@ -1,13 +1,13 @@
 <template>
   <div class="in_preview_warpper pkswiperN">
       <div v-if="!isClick">
-        <swiper :options="swiperOption" ref="mySwiper" v-if="imgList.length>0">
+        <swiper :options="swiperOptionProducts" ref="mySwiper" v-if="imgList.length>0">
             <!-- slides -->
             <swiperSlide v-for="(slide, index) in imgList" :key="index">
                 <img :src="slide[0]" class="BannerImg"  @click="viewImg(index)">
             </swiperSlide>
         </swiper>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination swiper-pagination-Products"></div>
       </div>
       <div class="AttrImg" v-else>
            <img :src="AttrImg" class="BannerImg"  @click="viewImg(0)">
@@ -39,15 +39,16 @@ import { Vue, Prop, Component, Watch } from 'vue-property-decorator';
 import { swiper, swiperSlide } from 'vue-awesome-swiper/src';
 import 'viewerjs/dist/viewer.css';
 // import { component as Viewer } from 'v-viewer';
-import Viewer from 'v-viewerc/component.vue';
+// import Viewer from 'v-viewerc/component.vue';
+import Viewer from 'v-viewer/src/component.vue';
 @Component({ components: { swiper, swiperSlide, Viewer } })
 export default class PkProductSwiper extends Vue {
   @Prop() private readonly imgList!: string[];
   @Prop() private readonly ProductTitleName!: string[];
   private currentIndex = 0;
-      swiperOption: object = {
+      swiperOptionProducts: object = {
         pagination: {
-          el: '.swiper-pagination',
+          el: '.swiper-pagination.swiper-pagination-Products',
           clickable: true
         }
       };
@@ -92,23 +93,23 @@ export default class PkProductSwiper extends Vue {
 }
 .pkswiperN{
  .swiper-pagination-bullet {
-    margin-left: 5px;
+    margin: 0 4px;
     width: 10px!important;
     height: 10px!important;
-    background: #fff;
+    background: #cda975;
     opacity: 1;
-    border:2px solid #fff;
+    transition: all 0.3s;
   }
 .swiper-pagination-bullet-active{
-    border:2px solid #fff!important;
-    width: 10px!important;
+    width: 36px!important;
     height: 10px!important;
-    background:transparent!important;
+    background:#cda975!important;
+    border-radius: 5px;
   }
 .swiper-pagination{
-      margin-top: -1rem;
-      transform: translateX(-50%) translateY(-50%);
-      left: 50%;
+      margin-top: -2rem;
+      // transform: translateX(-50%) translateY(-50%);
+      right: 2rem;
   }
 }
 </style>

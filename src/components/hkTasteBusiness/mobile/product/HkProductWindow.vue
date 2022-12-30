@@ -4,8 +4,13 @@
         <div class="in_pdWindow_item_description">
              <router-link :to="'/product/detail/'+item.Sku" class="in_pdWindow_item_title" >&nbsp;{{item.Name}}</router-link >
             <!-- <div class="in_pdWindow_item_code">&nbsp;{{item.Code}}</div> -->
-            <div class="in_pdWindow_item_price">
+            <!-- <div class="in_pdWindow_item_price">
               <inPrices :primePrices="item.ListPrice" :currentPrices="item.SalePrice" :currency="item.Currency" :DefaultListPrice="item.DefaultListPrice" :DefaultSalePrice="item.DefaultSalePrice" :DefaultCurrency="item.DefaultCurrency" size="small"></inPrices>
+            </div> -->
+            <div class="in_pdWindow_item_text" v-html="item.OverView" v-if="item.OverView"></div>
+            <div class="in_pdWindow_item_text" v-html="item.Description" v-if="item.Description"></div>
+            <div class="buy" v-if="$route.name !== 'ProductsDetail'">
+              <router-link :to="'/product/detail/'+item.Sku" class="buy_title" >{{$t('product.buyNow')}}</router-link >
             </div>
         </div>
     </div>
@@ -76,25 +81,59 @@ export default class InsProductWindow extends Vue {
   box-sizing: border-box;
   cursor: pointer;
   width: 100%;
-  border: 1px solid #cdcdcd;
+  // border: 1px solid #cdcdcd;
 }
-.height_line {
-  border: 1px solid black !important;
+// .height_line {
+//   border: 1px solid black !important;
+// }
+.in_pdWindow_page_item{
+  border: 1px solid #dbba7a;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: calc( 100% - 2px);
+  padding-bottom: 1.5rem;
 }
 .in_pdWindow_item_title {
     font-size: 1.4rem;
-    width: 90%;
+    width: 96%;
     margin: 0 auto;
     text-align: center;
-    color: #0b0b0b;
+    color: #d9b672;
     line-height: 25px;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     word-break: break-word;
     margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
+    font-family: 'SourceHanSans-Regular';
+    font-weight: bold;
+}
+.in_pdWindow_item_text{
+  text-align: center;
+  /deep/ p{
+    font-size: 1.2rem;
+    color: #666666;
+    margin-bottom: 1rem;
+  }
+}
+.buy{
+  text-align: center;
+  .buy_title{
+    padding: 0 2rem;
+    height: 3rem;
+    background-color: #d9b672;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 3rem;
+    font-family: 'SourceHanSans-Regular';
+    color: #fff;
+    font-size: 1.4rem;
+    display: inline-block;
+  }
 }
 .in_pdWindow_item_code {
   margin-top: 1rem;

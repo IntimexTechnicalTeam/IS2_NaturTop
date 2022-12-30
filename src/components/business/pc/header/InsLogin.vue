@@ -331,8 +331,8 @@ export default class InsLogin extends Vue {
 /*头部登录弹框 css*/
 .handle-icon {
     display: block;
-    width:25px;
-    height: 25px;
+    width:20px;
+    height: 24px;
     color: #cccccc;
     -webkit-transition-duration: 0.1s;
     transition-duration: 0.1s;

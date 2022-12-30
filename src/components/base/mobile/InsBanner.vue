@@ -3,7 +3,7 @@
     <transition name="slide">
       <div key="1" v-if="!waiting" style="display:flex;">
         <div class="header-index">
-          <swiper :options="swiperOption" v-if="bannerList.length>0 && initSwiper">
+          <swiper :options="swiperOptionhomeM" v-if="bannerList.length>0">
             <!-- slides -->
             <swiperSlide
               v-for="(slide, index) in bannerList"
@@ -14,19 +14,9 @@
               </a>
             </swiperSlide>
             <!-- Optional controls -->
-            <div class="swiper-pagination" slot="pagination"></div>
-            <div
-              class="swiper-button-prev"
-              slot="button-prev"
-              v-if="swiperOption.navigation && swiperOption.navigation.nextEl"
-            ></div>
-            <div
-              class="swiper-button-next"
-              slot="button-next"
-              v-if="swiperOption.navigation && swiperOption.navigation.prevEl"
-            ></div>
+            <div class="swiper-pagination swiper-pagination-home" slot="pagination"></div>
           </swiper>
-          <!-- <img :src="bannerImg" v-else /> -->
+          <img :src="bannerImg" v-else />
         </div>
       </div>
     </transition>
@@ -57,17 +47,15 @@ export default class InsBanner extends Vue {
   bannerList: object[] = [];
   bannerImg: string = '';
   isload: boolean = false;
-  swiperOption: object = {
+  swiperOptionhomeM: object = {
+    effect: 'fade',
     autoplay: {
+      delay: 5000,
       disableOnInteraction: false
     },
     pagination: {
-      el: '.swiper-pagination',
+      el: '.swiper-pagination-home',
       clickable: true
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
     }
   };
   getBanner () {
@@ -88,7 +76,7 @@ export default class InsBanner extends Vue {
 
   created () {
     if (this.initOptions) {
-      this.swiperOption = this.initOptions;
+      this.swiperOptionhomeM = this.initOptions;
     }
   }
 
@@ -117,13 +105,13 @@ export default class InsBanner extends Vue {
 </script>
 <style lang="less">
 .mobileBanner .swiper-pagination-bullet{
-  width: 12px!important;
-  height: 12px!important;
+  width: 14px!important;
+  height: 14px!important;
   background: #fff;
   opacity: 1;
 }
 .mobileBanner .swiper-pagination-bullet-active{
-  background: #666666!important;
+  background: #cda975!important;
 }
 </style>
 <style scoped lang="less">
@@ -203,15 +191,17 @@ export default class InsBanner extends Vue {
   width: 100%;
 }
 .swiper-pagination {
-  text-align: center;
+  text-align: left;
   width: 100%;
-  // bottom: 150px;
+  margin-left: 1.5rem;
+  bottom: 1.5rem;
+
 }
 .swiper-container-horizontal
   > .swiper-pagination-bullets.swiper-pagination-bullet {
-  margin: 0 8px;
-  width: 15px;
-  height: 15px;
+  margin: 0 9px;
+  width: 14px;
+  height: 14px;
 }
 
 .swiper-slide {

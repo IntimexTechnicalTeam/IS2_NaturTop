@@ -75,6 +75,7 @@ ul,li{
   .accountBg{
     width:100%;
     background: url('/images/mobile/Mobile-Personal-Center_02.jpg') no-repeat center center;
+    background-color: #f9eed9;
     background-size: 100% 100%;
     display: inline-block;
     box-sizing: border-box;

@@ -97,6 +97,6 @@ export default class InsMenberCenter extends Vue {
 }
 .MemberPc .activeInfo a {
   color: #fff !important;
-  background: #666666 !important;
+  background: #d9b672 !important;
 }
 </style>

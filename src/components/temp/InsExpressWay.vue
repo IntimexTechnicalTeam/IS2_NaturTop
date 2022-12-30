@@ -883,6 +883,11 @@ export default class InsExpressWay extends Vue {
         }
     }
   }
+  /deep/ .in_select_main{
+    color: #333;
+    font-size: 16px;
+        line-height: 40px;
+  }
   .express_pickup,.store_pickup,.pickup_info{
     padding: 0 20px 20px 20px;
   }

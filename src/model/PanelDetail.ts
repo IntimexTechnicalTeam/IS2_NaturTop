@@ -27,6 +27,13 @@ export default class PanelDetail {
   public set OverView (v : string) {
     this._OverView = v;
   }
+  private _Specification : string;
+  public get Specification () : string {
+    return this._Specification;
+  }
+  public set Specification (v : string) {
+    this._Specification = v;
+  }
   private _Code : string;
   public get Code () : string {
     return this._Code;
@@ -190,7 +197,7 @@ export default class PanelDetail {
     this._Permission = v;
   }
   public button: Button[] = [];
-  constructor (sku:string, name:string, code:string, Permission:string, listPrice:number, salePrice:number, DefaultListPrice:number, DefaultSalePrice:number, _YoutubeLink:string, overView:string = '', attrList:ProductAttr[][] = [], extAttrList:ProductAttr[][] = [], productStatus:number = 3, currency:Currency = new Currency(), DefaultCurrency:Currency = new Currency(), _MaxPurQty:number = 0, _MinPurQty:number = 1, _CatId = 0, _CatalogTree = [], _IsFavorite:boolean = false, _Score:number = 0, _UnitInfo:object = {}, _SoldOutAttrComboList = [], _AttrComboImgList = []) {
+  constructor (sku:string, name:string, code:string, Permission:string, listPrice:number, salePrice:number, DefaultListPrice:number, DefaultSalePrice:number, _YoutubeLink:string, overView:string = '', Specification:string = '', attrList:ProductAttr[][] = [], extAttrList:ProductAttr[][] = [], productStatus:number = 3, currency:Currency = new Currency(), DefaultCurrency:Currency = new Currency(), _MaxPurQty:number = 0, _MinPurQty:number = 1, _CatId = 0, _CatalogTree = [], _IsFavorite:boolean = false, _Score:number = 0, _UnitInfo:object = {}, _SoldOutAttrComboList = [], _AttrComboImgList = []) {
     this._Name = name;
     this._Sku = sku;
     this._Code = code;
@@ -198,6 +205,7 @@ export default class PanelDetail {
     this._SalePrice = salePrice;
     this._ProductStatus = productStatus;
     this._OverView = overView;
+    this._Specification = Specification;
     this._AttrList = attrList;
     this._ExtAttrList = extAttrList;
     this._Currency = currency;

@@ -2,16 +2,29 @@
 <div class="in_panel_header">
     <div class="p-name-box">
       <p style="width: 88%;">{{panelDetail.Name}}</p>
+      <div class="OverView" v-html="panelDetail.OverView"></div>
+      <div class="fix">
+        <div class="ProductCode">{{$t("product.ProductCode")}}:{{panelDetail.Code}}</div>
+        <!-- <div class="ProductRate">
+          <Rate  v-model="panelDetail.Score" disabled  disabled-void-color="#5f6548" disabled-void-icon-class="el-icon-star-off"></Rate>
+        </div> -->
+      </div>
+      <div class="Specification fix" v-if="panelDetail.Specification">
+        <div v-html="panelDetail.Specification"></div>
+      </div>
+
       <div class="in_pannel_addtofav"><img :src="panelDetail.IsFavorite ? '/images/pc/productDetail_01.png': '/images/pc/productDetail_05.png'" @click="addFavorite"/></div>
     </div>
-    <div class="in_panel_subTitle"><inPrices :primePrices="panelDetail.ListPrice+AddPrice" :currentPrices="panelDetail.SalePrice+AddPrice"  :currency="panelDetail.Currency" :DefaultListPrice="panelDetail.DefaultListPrice+AddPrice" :DefaultSalePrice="panelDetail.DefaultSalePrice+AddPrice" :DefaultCurrency="panelDetail.DefaultCurrency" size="huge" :heightLine="true" styla="margin: 1rem 0;" :max="panelDetail.MaxPurQty" :min="panelDetail.MinPurQty"></inPrices></div>
-    <div class="in_unitInfo" v-if="panelDetail.UnitInfo.Desc!==null">{{$t('product.Unit')}}:{{panelDetail.UnitInfo.Desc}}</div>
-    <div class="in_panel_product">
+    <div class="in_panel_subTitle">
+      <p>{{$t('product.priceTitle')}}: </p>
+      <inPrices :primePrices="panelDetail.ListPrice+AddPrice" :currentPrices="panelDetail.SalePrice+AddPrice"  :currency="panelDetail.Currency" :DefaultListPrice="panelDetail.DefaultListPrice+AddPrice" :DefaultSalePrice="panelDetail.DefaultSalePrice+AddPrice" :DefaultCurrency="panelDetail.DefaultCurrency" size="huge" :heightLine="true" styla="margin: 20px 0;" :max="panelDetail.MaxPurQty" :min="panelDetail.MinPurQty"></inPrices></div>
+    <!-- <div class="in_unitInfo" v-if="panelDetail.UnitInfo.Desc!==null">{{$t('product.Unit')}}:{{panelDetail.UnitInfo.Desc}}</div> -->
+    <!-- <div class="in_panel_product">
         <div class="ProductCode">
             <div class="leftpart">{{$t("product.ProductCode")}}: {{panelDetail.Code}}</div>
             <div class="rightpart"><HkProductShare></HkProductShare></div>
         </div>
-    </div>
+    </div> -->
 </div>
 </template>
 <script lang="ts">
@@ -19,11 +32,13 @@ import { Vue, Prop, Component, Watch } from 'vue-property-decorator';
 import PanelDetail from '@/model/PanelDetail';
 import inPrices from '@/components/base/pc/InsPrices.vue';
 import HkProductShare from '@/components/hkTasteBusiness/pc/product/HkProductShare.vue';
-@Component({ components: { inPrices, HkProductShare } })
+import { Rate } from 'element-ui';
+@Component({ components: { inPrices, HkProductShare, Rate } })
 export default class PkProductInfo extends Vue {
   @Prop() private readonly panelDetail!: PanelDetail;
   @Prop() private readonly ProductSku!: string;
   @Prop() private readonly AddPrice!: string;
+  private Score:number=0;
   addFavorite () {
     let ps;
     if (this.panelDetail.IsFavorite) {
@@ -81,16 +96,46 @@ export default class PkProductInfo extends Vue {
     width: 100%;
     position: relative;
     margin-top: 10px;
+    .ProductCode{
+      font-size: 14px;
+      color: #333;
+      font-family: 'SourceHanSans-Regular';
+      margin-top: 10px;
+      float: left;
+    }
+    .ProductRate{
+      float: right;
+      margin-top: 15px;
+    }
 }
 .p-name-box p {
     width: 100%;
-    color: #1b1b1b;
-    font-size: 26px;
-    line-height: 26px;
+    color: #d9b672;
+    font-size: 32px;
+    line-height: 36px;
     overflow: hidden;
     -webkit-box-orient: vertical;
     word-wrap: break-word;
-    text-align: center;
+    text-align: left;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    font-family: 'SourceHanSans-Regular';
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.p-name-box .Specification{
+  margin-top: 10px;
+  /deep/ p{
+    font-size: 18px;
+    color: #333;
+    font-family: 'SourceHanSans-Regular';
+    span{
+      font-size: 18px;
+    color: #333;
+    font-family: 'SourceHanSans-Regular';
+    }
+  }
 }
 .p-name-box .in_pannel_addtofav{
     position: absolute;
@@ -103,6 +148,14 @@ export default class PkProductInfo extends Vue {
 .p-name-box .in_pannel_addtofav img{
     width: 30px;
     cursor: pointer;
+}
+.p-name-box .OverView{
+  /deep/ p{
+    color: #333;
+    line-height: 32px;
+    font-size: 18px;
+    font-family: 'SourceHanSans-Regular';
+  }
 }
 .in_panel_header{
   width: 100%;
@@ -138,18 +191,23 @@ export default class PkProductInfo extends Vue {
     float:left;
 }
 .in_panel_subTitle{
-    font-size: 16px!important;
+    // font-size: 16px!important;
     position: relative;
-    width: 88%;
-    text-align: center;
+    width: 100%;
+    text-align: left;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
   >img{
     position: absolute;
     right: 0;
     top: 50%;
     transform: translate(0,-50%);
+  }
+  p{
+    font-size: 24px;
+    color: #e27368;
+    margin-right: 14px;
   }
 }
 </style>

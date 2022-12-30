@@ -92,8 +92,10 @@ export default class InsShoppingcartItem extends Vue {
 .shoppingcart_item_code,
 .shoppingcart_item_attr,
 .shoppingcart_item_price{
-    line-height: 2.5rem;
+    line-height: 1.6rem;
     font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
     // width: 10rem;
 }
 .shoppingcart_item_price >div{

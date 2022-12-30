@@ -7,7 +7,7 @@
         <div class="in_slider_page_container" @click="click">
           <div class="in_slider_page_item" v-for="(item,index) in page" :key="index">
             <div class="in_slider_page_item" v-if="!item.virtual">
-              <inProductWindow :item="item" :imgStyla="imgStyla" styla="width:80%;margin:0 auto;"></inProductWindow>
+              <inProductWindow :item="item" :imgStyla="imgStyla" styla="width:100%;margin:0 auto;"></inProductWindow>
             </div>
           </div>
         </div>
@@ -59,7 +59,11 @@ export default class InsYouWouldLike extends Vue {
     console.log(item);
   }
   created () {
-    this.$Api.product.getRltProduct(this.ProductSku).then((result) => { this.InnerItems = result.YouWouldLike; this.ShowItemsLength = result.YouWouldLike.length; });
+    this.$Api.product.getRltProduct(this.ProductSku).then((result) => {
+      this.InnerItems = result.YouWouldLike;
+      this.ShowItemsLength = result.YouWouldLike.length;
+      console.log(result, '猜你喜欢');
+    });
   }
   @Watch('InnerItems')
   onInnerItemsChange (o, n) {
@@ -89,33 +93,44 @@ export default class InsYouWouldLike extends Vue {
 <style>
 .PcVersionYouLike .swiper-button-prev{
   background-image:url('/images/pc/cleft.png')!important;
-  left:-10px!important;
+  left:38px!important;
 }
 .PcVersionYouLike .swiper-button-next{
     background-image:url('/images/pc/cright.png')!important;
-    right:-10px!important;
+    right:38px!important;
 }
 .PcVersionYouLike  .swiper-button-prev,.PcVersionYouLike  .swiper-button-next{
-    width: 50px!important;
-    height: 50px!important;
+    width: 20px!important;
+    height: 37px!important;
     background-size:100%!important;
 }
 </style>
 <style scoped>
 .in_slider_title {
   text-align: center;
-  margin: 4rem 0;
-  font-size: 2rem;
+  margin: 4rem auto;
+  text-align: center;
+  font-size: 36px;
+  font-family: 'SourceHanSans-Heavy';
+  background: -webkit-gradient(linear, left top, right top, from(#db9307), color-stop(#f4de91), to(#db9307));
+  background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+  -webkit-background-clip: text;
+  color: transparent;
+  display: flex;
+  justify-content: center;
+  width: 310px;
 }
 .in_slider_page_container {
   box-sizing: border-box;
   display: flex;
   flex-wrap: nowrap;
-  width: 95%;
+  width: 960px;
   margin: 0 auto;
   user-select: none;
+  overflow: hidden;
 }
 .in_slider_page_item {
-   width: 100%;
+   width: 300px;
+   margin-right: 30px;
 }
 </style>

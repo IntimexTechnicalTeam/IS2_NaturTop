@@ -98,7 +98,7 @@ export default {
     favorite: '加入我的清单',
     priceTitle: '价格',
     countTitle: '数量',
-    youWouldLike: '你可能喜欢',
+    youWouldLike: '猜你喜欢',
     moreTips: '点击加载更多',
     none: '没有了',
     noneInCat: '当前目录无产品，请选择其他目录',
@@ -376,7 +376,7 @@ export default {
     SubTotal: '商品小计',
     PayBy: '支付方式',
     Couponcode: '优惠码',
-    confirm: '保存地址',
+    confirm: '确定',
     Total: '共',
     BacktoShoppingCart: '返回购物车',
     Last: '上一页',
@@ -489,7 +489,8 @@ export default {
     Resetall: '重置所有筛选条件',
     PriceHL: '价格从高至低',
     PriceLH: '价格从低至高',
-    Thatsall: '以上是全部内容'
+    Thatsall: '以上是全部内容',
+    shopping: '马上逛逛'
   },
   Action: {
     ReturnHomePage: '返回首页',

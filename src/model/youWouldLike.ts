@@ -32,6 +32,22 @@ export default class YouWouldLike {
     this._Img_L = v;
   }
 
+  private _Description : string = '';
+  public get Description () : string {
+    return this._Description;
+  }
+  public set Description (v : string) {
+    this._Description = v;
+  }
+
+  private _OverView : string = '';
+  public get OverView () : string {
+    return this._OverView;
+  }
+  public set OverView (v : string) {
+    this._OverView = v;
+  }
+
   // private _AdditionalImage : string[];
   // public get AdditionalImage() : string[] {
   //   return this._AdditionalImage;
@@ -126,9 +142,11 @@ export default class YouWouldLike {
     DefaultCurrency: Currency = new Currency(),
     virtual: boolean = false,
     IsFavorite: boolean = false,
-    HasStockAttrVal: boolean = false
+    HasStockAttrVal: boolean = false,
+    Description: string = '',
+    OverView: string = ''
   ) {
-    if (typeof id === 'string') { this._constructorDefault(id, src, title, productCode, primePrice, presentPrice, currency, DefaultListPrice, DefaultSalePrice, DefaultCurrency, virtual, IsFavorite, HasStockAttrVal); } else if (typeof src === 'object') { this._constructorArray(src); }
+    if (typeof id === 'string') { this._constructorDefault(id, src, title, productCode, primePrice, presentPrice, currency, DefaultListPrice, DefaultSalePrice, DefaultCurrency, virtual, IsFavorite, HasStockAttrVal, Description, OverView); } else if (typeof src === 'object') { this._constructorArray(src); }
   }
   _constructorDefault (
     id: string,
@@ -143,7 +161,9 @@ export default class YouWouldLike {
     DefaultCurrency: Currency = new Currency(),
     virtual: boolean = false,
     IsFavorite: boolean = false,
-    HasStockAttrVal: boolean = false
+    HasStockAttrVal: boolean = false,
+    Description: string = '',
+    OverView: string = ''
     ) {
     this._Sku = id;
     this._Image = src;
@@ -160,9 +180,11 @@ export default class YouWouldLike {
     this._Img_L = src;
     this.IsFavorite = IsFavorite;
     this.HasStockAttrVal = HasStockAttrVal;
+    this._Description = Description;
+    this._OverView = OverView;
   }
   _constructorArray (item:any) {
-    if (item.id === undefined || item.src === undefined || item.title === undefined || item.productCode === undefined || item.primePrice === undefined || item.presentPrice === undefined) { throw new Error('params error : class YouWouldLike must contains src,title,productCode,primePrice,presentPrice,virtual'); }
+    if (item.id === undefined || item.src === undefined || item.title === undefined || item.productCode === undefined || item.primePrice === undefined || item.presentPrice === undefined || item.Description === undefined || item.OverView === undefined) { throw new Error('params error : class YouWouldLike must contains src,title,productCode,primePrice,presentPrice,virtual,Description'); }
     this._Sku = item.id;
     this._Image = item.src;
     this._Img = item.src;
@@ -174,5 +196,7 @@ export default class YouWouldLike {
     this.virtual = item.virtual;
     this.IsFavorite = item.IsFavorite;
     this._Img_L = item.src;
+    this._Description = item.Description;
+    this._OverView = item.OverView;
   }
 }

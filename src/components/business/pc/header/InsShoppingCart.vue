@@ -220,8 +220,8 @@ export default class InsShoppingCart extends Vue {
 /*头部购物车弹框 css*/
 .handle-icon {
   display: block;
-  width: 25px;
-  height: 25px;
+  width: 23px;
+  height: 24px;
   color: #cccccc;
   -webkit-transition-duration: 0.1s;
   transition-duration: 0.1s;
@@ -413,5 +413,8 @@ export default class InsShoppingCart extends Vue {
   overflow-x: hidden;
   max-height: 500px;
   overflow-y: scroll;
+}
+.window-cart-num, .window-cart-price{
+  font-size: 16px;
 }
 </style>

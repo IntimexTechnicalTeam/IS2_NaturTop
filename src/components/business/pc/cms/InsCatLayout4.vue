@@ -1,23 +1,40 @@
 <template>
     <div class="cms-list">
-        <ul>
-            <li v-for="(cms,index) in cmsData" :key="index">
-                <router-link :to="'/cms/content/'+cms.Id">
-                    <div class="cover">
-                        <img :src="cms.Cover" alt=""/>
-                    </div>
-                    <div class="introduce">
-                        <p class="title">{{cms.Title}}</p>
-                        <p class="createDate">{{cms.CreateDate}}</p>
-                        <p class="desc">{{cms.Desc}}</p>
-                        <p class="viewMore"><span>{{$t('Message.ViewDetail')}}</span></p>
-                    </div>
-                </router-link>
-            </li>
-        </ul>
+        <div class="pathwayList" v-if="cmsCatId == 40113">
 
-        <div class="pager" v-if="pager.totalRecord > pager.pageSize">
-            <ins-page :total="pager.totalRecord" v-model="pager.currentPage" :pageNum="pager.pageSize"></ins-page>
+            <ul>
+                <li v-for="(cms,index) in cmsData" :key="index">
+                    <a href="javascript:;" @click="toUrl(cms)">
+                        <div class="cover">
+                            <img :src="cms.Cover" alt=""/>
+                        </div>
+                        <div class="introduce">
+                            <p class="title">{{cms.Title}}</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div v-else>
+            <ul>
+                <li v-for="(cms,index) in cmsData" :key="index">
+                        <router-link :to="'/cms/content/'+cms.Id">
+                        <div class="cover">
+                            <img :src="cms.Cover" alt=""/>
+                        </div>
+                        <div class="introduce">
+                            <p class="title">{{cms.Title}}</p>
+                            <p class="createDate">{{cms.CreateDate}}</p>
+                            <p class="desc">{{cms.Desc}}</p>
+                            <p class="viewMore"><span>{{$t('Message.ViewDetail')}}</span></p>
+                        </div>
+                    </router-link>
+                </li>
+            </ul>
+
+            <div class="pager" v-if="pager.totalRecord > pager.pageSize">
+                <ins-page :total="pager.totalRecord" v-model="pager.currentPage" :pageNum="pager.pageSize"></ins-page>
+            </div>
         </div>
     </div>
 </template>
@@ -32,6 +49,19 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 export default class InsCatLayout1 extends Vue {
     @Prop({ default: () => [] }) private cmsData!: object[]; // cms内容列表数据
     @Prop({ default: () => {} }) private pager!: object; // 分頁器數據
+    @Prop({ default: () => {} }) private cmsCatId!: object;
+
+    toUrl (n) {
+        if (!n.IsOpenWindows && n.Url) {
+        window.location.href = n.Url;
+        } else if (n.IsOpenWindows && n.Url) {
+        window.open(n.Url);
+        }
+    }
+
+    mounted() {
+    //  console.log(this.cmsData!, 'cmsCatId');
+    }
 }
 </script>
 
@@ -122,5 +152,53 @@ export default class InsCatLayout1 extends Vue {
         }
         }
     }
+    .pathwayList{
+        margin-bottom: 30px;
+        ul{
+            li{
+                width: 280px;
+                margin-right: 26px;
+                margin-bottom: 30px;
+                overflow: hidden;
+
+                a{
+                    border-radius: 6px;
+                    border:1px solid #cccccc;
+                    padding: 30px;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    transition: all 0.3s;
+                    .cover{
+                        img{
+                            width: 100%;
+                            height: 120px;
+                            object-fit: contain;
+                            display: block;
+                        }
+                    }
+                    .introduce {
+                        padding-bottom: 0;
+                        .title{
+                            border: none;
+                            text-align: center;
+                            padding-bottom: 0;
+                            margin-bottom: 0;
+                            transition: all 0.3s;
+                        }
+                    }
+                }
+                &:hover{
+                    a{
+                        background-color: #fff8ea;
+                        border: 1px solid transparent;
+                        .title{
+                            color: #debf82;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
 </style>

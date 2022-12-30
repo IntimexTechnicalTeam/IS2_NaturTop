@@ -1,22 +1,37 @@
 <template>
-    <div>
+    <div class="menu_headerTop">
+        <div class="headerTop">
+            <div class="left">
+                <ins-login />
+                <ins-lang-switch class="headerLang" />
+                <CodeSelect class="header-code" />
+
+            </div>
+            <div class="right">
+                <img class="close-meun" src="/images/mobile/out.png" @click="showSlideMenu" v-show="this.$store.state.isShowMenu"  />
+            </div>
+
+        </div>
+
         <div class="header_logo" v-if="!this.FrontE.slideMenu.Embedded">
             <i class="el-icon-close" @click="closeSlideMenu"></i>
         </div>
         <div class="searchBox">
-            <input type="text" v-model="searchKey" />
-            <span class="search_btn"  @click="searchFun(searchKey)"><img src="/images/mobile/searchbtn.png"></span>
+            <div class="searchcentre">
+                <input type="text" v-model="searchKey" />
+                <span class="search_btn"  @click="searchFun(searchKey)"><img src="/images/mobile/searchbtn.png"></span>
+            </div>
         </div>
         <div id="menu">
             <Menu :backColor="'@base_color'" :textColor="'#fff'" :uniqueOpened="true" />
         </div>
-        <div class="menu_footer">
+        <!-- <div class="menu_footer">
             <div class="innerShare">
                 <a href="https://www.facebook.com/hktastefood/" class="nav" target="_blank"><img src="/images/mobile/facebook.png"/></a>
                 <a href="https://www.facebook.com/hktastefood/" class="nav" target="_blank"><img src="/images/mobile/ig.png"/></a>
                 <a href="https://www.youtube.com/embed/videoseries?list=PLeU-XfKN4KcjVolI4daTvRI2oNOSLCILM"  class="nav" target="_blank"><img src="/images/mobile/youtube.png" /></a>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -27,12 +42,27 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
   components: {
     InsLogo: () => import('@/components/base/mobile/InsLogo.vue'),
     Menu: () => import('@/components/business/mobile/header/InsElMenu.vue'),
-    InsLangSwitch: () => import('@/components/business/mobile/header/InsLangSwitch.vue')
+    InsLangSwitch: () => import('@/components/business/mobile/header/InsLangLi.vue'),
+    InsLogin: () => import('@/components/business/mobile/header/InsLogin.vue'),
+    CodeSelect: () =>
+      import('@/components/business/mobile/header/InsCodeLi.vue')
   }
 })
 export default class InsMenuLayout extends Vue {
   showMemNav: boolean = false;
   searchKey: string = '';
+
+closeDialog () {
+    this.$store.dispatch('isShowMenu', false);
+  }
+  showSlideMenu () {
+    let isShow = !JSON.parse(JSON.stringify(this.menuShow));
+    this.$store.dispatch('isShowMenu', isShow);
+  }
+
+  get menuShow () {
+    return this.$store.state.isShowMenu;
+  }
 
   handleOpen (key, keyPath) {
     console.log(key, keyPath);
@@ -107,35 +137,49 @@ export default class InsMenuLayout extends Vue {
     width: 3rem;
 }
 .searchBox{
-    width: 90%;
-    height: 4rem;
-    margin: 0 auto;
-    margin-top: 3rem;
-    position: relative;
-    overflow: hidden;
+    width: 100%;
+    margin-top: 1rem;
+
     margin-bottom: 2rem;
-    border:1px solid #666666;
-    input{
-        width: calc(100% - 10px);
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 2rem;
+    .searchcentre{
         height: 4rem;
+    margin: 0 1.5rem;
+        border:2px solid #9f9f9f;
+        box-sizing: border-box;
+        border-radius: 6px;
+        position: relative;
+    overflow: hidden;
+    }
+    input{
+        width: calc(100% - 4rem);
+        height: 3.8rem;
         margin: 0 auto;
         text-indent: 10px;
         border:none;
+        outline: none;
+        margin-top: -2px;
+        margin-left: -2px;
     }
     .search_btn{
         position: absolute;
         right: 0px;
         top:0rem;
-        width: 4rem;
-        height: 4rem;
-        background: #666666;
+        width: 3.8rem;
+        height: 3.8rem;
+        background: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-top: -2px;
+        margin-right: -2px;
+        margin-right: 0.5rem;
         img{
-            width: 50%;
+            width: 3rem;
             margin: 0 auto;
             display: block;
+
         }
     }
 }
@@ -158,8 +202,9 @@ export default class InsMenuLayout extends Vue {
     }
 
     .el-menu {
-        width: 90%;
+        // width: 90%;
         margin: 0 auto;
+        padding: 0 3rem;
         background-color: transparent;
         border: 0;
         margin-bottom: 1rem;
@@ -175,35 +220,63 @@ export default class InsMenuLayout extends Vue {
             text-align: center;
             margin-bottom: 1rem;
              >a {
-                 color:#666666;
-                 background: #fff;
+                 color:#fff;
+                 background: #cccccc;
                  background-size: 100% 100%;
                  display:block;
                  width: 100%;
                  padding-top: .8rem;
                  padding-bottom: .8rem;
                  margin: 0 auto;
-                 border:1px solid #666666;
                  font-weight: 500;
+                 box-sizing: border-box;
+                 border-radius: 6px;
                  b{
-                     color:#FFF;
+                     color:#fff;
                      display: block;
                      width: 100%;
                      font-weight: 500;
-                     &:nth-child(1){
-                        color:#666666;
-                        font-weight: 500;
-                        font-size: 1.6rem;
-                     }
-                     &:nth-child(2){
-                         color:#262626;
-                         font-size: 1.2rem;
-                     }
+                     font-size: 1.6rem;
+                    //  &:nth-child(1){
+                    //     color:#fff;
+                    //     font-weight: 500;
+                    //     font-size: 1.6rem;
+                    //  }
+                    //  &:nth-child(2){
+                    //      color:#262626;
+                    //      font-size: 1.2rem;
+                    //  }
                  }
             }
 
             a {
                 text-decoration: none;
+            }
+            a.router-link-active{
+                background-color: #d9b672;
+                position: relative;
+                &::before{
+                    content: '';
+                    width: 1.2rem;
+                    height: 1.6rem;
+                    background: url(/images/mobile/menuicon.png) no-repeat;
+                    position: absolute;
+                    background-size: contain;
+                    left: 3rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+                &::after{
+                    content: '';
+                    width: 1.2rem;
+                    height: 1.6rem;
+                    background: url(/images/mobile/menuicon.png) no-repeat;
+                    position: absolute;
+                    background-size: contain;
+                    right: 3rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
             }
         }
 
@@ -259,11 +332,33 @@ export default class InsMenuLayout extends Vue {
         font-size: 1.5rem;
         display: inline-block;
         color: #fff;
-        margin: 0 0.8rem;
+        // margin: 0 0.8rem;
 
         &.active {
             color: #127437;
             font-weight: bold;
+        }
+    }
+}
+.menu_headerTop{
+    .headerTop{
+        height: 6rem;
+        background-color: #d9b672;
+        padding: 0 1.5rem;
+        .left{
+            float: left;
+            display: flex;
+            height: 6rem;
+            align-items: center;
+        }
+        .right{
+            float: right;
+            display: flex;
+            height: 6rem;
+            align-items: center;
+            img{
+                width: 2rem;
+            }
         }
     }
 }

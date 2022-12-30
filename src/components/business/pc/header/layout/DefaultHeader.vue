@@ -1,39 +1,44 @@
 <template>
 <div class="header-layout"  v-cloak>
-  <div class="headerBg">
-      <div class="headerTop">
+  <div class="headerBg" :class="{'Engap': $Storage.get('locale') === 'E'}">
+      <div class="headerTop fix">
+          <!-- logo开始 -->
+          <div class="logoBox">
+              <a href="/" v-if="!showInFixed"><img src="/images/pc/pcindex_09.png"></a>
+              <a href="/" v-if="showInFixed"><img src="/images/pc/pcindex_14.png"></a>
+          </div>
+          <!-- logo结束 -->
           <div class="inner">
               <!-- 搜索框开始 -->
               <div class="search-box">
-                <input type="text" v-model="key" class="inputBox" />
                 <span class="searchBtn" @click="searchFun(key)"></span>
+                <input type="text" v-model="key" class="inputBox" />
               </div>
               <!--搜索框结束  -->
+
+              <!-- 切换语言开始 -->
+
+              <div class="langBox">
+                  <!-- <InsLangSwitch></InsLangSwitch> -->
+                  <InsLangLi/>
+              </div>
+              <CodeLi/>
+              <!-- 切换语言结束 -->
               <!-- 会员登陆开始 -->
               <InsLogin class="memberLogin"></InsLogin>
               <!-- 我的喜爱开始 -->
-              <div class="cartTop">
+              <!-- <div class="cartTop">
                   <router-link to="/account/MyFavorite">
                           <i class="handle-icon fav-icon"></i>
                   </router-link>
-              </div>
+              </div> -->
               <!-- 我的喜爱结束 -->
               <!-- 购物车开始 -->
               <Shopcart class="memberLogin"></Shopcart>
               <!-- 购物车结束 -->
-              <!-- 切换语言开始 -->
-              <CodeSelect/>
-              <div class="langBox">
-                  <InsLangSwitch></InsLangSwitch>
-              </div>
-              <!-- 切换语言结束 -->
           </div>
       </div>
-      <!-- logo开始 -->
-      <div class="logoBox" v-if="!showInFixed">
-          <a href="/"><img src="/images/pc/pcindex_09.png"></a>
-      </div>
-      <!-- logo结束 -->
+
       <!-- 导航栏开始 -->
       <Menu />
       <!-- 导航栏结束 -->
@@ -53,8 +58,12 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
       import('@/components/business/pc/header/InsLogin.vue'),
     InsLangSwitch: () =>
       import('@/components/business/pc/header/InsLangSwitch.vue'),
+    CodeLi: () =>
+      import('@/components/business/pc/header/InsCodeLi.vue'),
     CodeSelect: () =>
-      import('@/components/business/pc/header/InsCodeSelect.vue')
+      import('@/components/business/pc/header/InsCodeSelect.vue'),
+    InsLangLi: () =>
+      import('@/components/business/pc/header/InsLangLi.vue')
   }
 })
 export default class DefaultHeader extends Vue {
@@ -137,34 +146,50 @@ export default class DefaultHeader extends Vue {
 .headerTop{
     width: 1200px;
     margin: 0 auto;
-    padding-top: 10px;
-    height: 34px;
+    padding-top: 24px;
+    // height: 34px;
+}
+.headerTop .logoBox{
+    width: 221px;
+    float: left;
+}
+.logoBox a{
+    display: flex;
+}
+.logoBox a img{
+   width: 100%;
 }
 .headerTop .inner{
     float: right;
+    display: flex;
+    padding-top: 12px;
+    align-items: center;
 }
 .search-box {
-    border: 1px solid #808080;
-    width: 340px;
+    border: 1px solid #333333;
+    width: 230px;
     display: flex;
     float: left;
     align-items: center;
     margin-right: 20px;
+    box-sizing: border-box;
+    border-radius: 3px;
 }
 .searchBtn{
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 21px;
     display: inline-block;
     background: url('/images/pc/pcindex_03.png') no-repeat center center;
-    background-size: 100%;
+    background-size: contain;
     cursor: pointer;
+    margin-left: 10px;
 }
 .search-box .inputBox {
-    width: 305px;
+    width: 194px;
     float: left;
-    border:none;
+    border: none;
     background: transparent;
-    line-height: 30px;
+    line-height: 28px;
     text-indent: 10px;
 }
 .search-box  .btn-send {
@@ -192,7 +217,7 @@ export default class DefaultHeader extends Vue {
     float: left;
     align-items: center;
     position: relative;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 .cartTop{
     display: flex;
@@ -225,20 +250,6 @@ export default class DefaultHeader extends Vue {
     background: #808080;
     color:#FFF!important;
 }
-.logoBox{
-    width: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 40px;
-}
-.logoBox a{
-    display: flex;
-}
-.logoBox a img{
-   width: 100%;
-}
 
 .fav-icon {
     background: url('/images/pc/pcindex_08.png') no-repeat center center;
@@ -251,36 +262,68 @@ export default class DefaultHeader extends Vue {
 // new css
 .header-layout {
  /deep/ .header_menu {
-   width: 1200px;
-   margin: 30px auto 10px;
+   width: 100%;
+   background-color: #d9b672;
+   border-bottom: 1px solid #cda975;
+   margin-top: 27px;
    > ul {
+    width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
      > li {
       float: left;
       display: flex;
       align-items: center;
       position: relative;
-      width: 14.28%;
-
+      width: auto;
+      justify-content: center;
+      padding: 7px 23px;
+      height: 40px;
+      &::after{
+          content: '';
+          width: 1px;
+          height: 21px;
+          background-color: #fff;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+        }
       > a {
         width: 100%;
-        font-size: 20px;
-        color: #666666;
+        font-size: 16px;
+        color: #fff;
         display: block;
         text-align: center;
         font-weight: 500;
         text-transform: uppercase;
-        padding: 10px 5px;
+        padding: 0;
+        position: relative;
+        font-family: 'SourceHanSans-Regular';
+         padding: 6px 18px;
+          border-radius: 5px;
+          transition: all 0.3s;
+
+      }
+      &:last-child{
+
+          &::after{
+          content: '';
+          display: none;
+        }
+
       }
 
       &:hover{
         > a  {
-          background: @base_color;
-          color: #fff;
+          background: #ffffff;
+          color: #d9b672;
+
         }
       }
 
       ul {
-        box-shadow: 0 0 5px #ccc;
+        box-shadow: 0 0 5px transparent;
 
         li {
           border: 0;
@@ -296,8 +339,8 @@ export default class DefaultHeader extends Vue {
 
           &:hover{
              > a {
-              background: @base_color;
-              color: #fff;
+              background: #fff;
+              color: #d9b672;
             }
           }
         }
@@ -305,5 +348,16 @@ export default class DefaultHeader extends Vue {
      }
    }
  }
+}
+.header-layout{
+    .Engap{
+    /deep/ .header_menu > ul > li {
+      padding: 7px 20px;
+      > a{
+        text-transform: none;
+        padding: 6px 12px;
+      }
+    }
+  }
 }
 </style>

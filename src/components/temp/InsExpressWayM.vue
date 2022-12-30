@@ -736,6 +736,7 @@ export default class InsExpressWay extends Vue {
           line-height: unset;
           padding: 10px 20px;
           white-space: normal;
+          color: #333;
         }
       }
     }
@@ -789,9 +790,10 @@ export default class InsExpressWay extends Vue {
     padding: 0 20px;
 }
 .expressWay_Warpper{
-  width: 100vw;
+  width: 100%;
   border: 1px solid rgba(0, 0, 0, .1);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
   .expressWay_title{
     font-size: 1.5rem;
     background-color:@base_color;
@@ -802,7 +804,14 @@ export default class InsExpressWay extends Vue {
     .express{
       .none{
             padding: 1rem;
+            /deep/ .in_btn {
+              span{
+                font-size: 1.2rem;
+              }
+            }
+
       }
+
       .address_item_warpper{
         .address_footer{
           margin: 20px;
@@ -819,6 +828,7 @@ export default class InsExpressWay extends Vue {
                   color: white;
                   background-color: @base_color;
                   cursor: pointer;
+                  font-size: 1.2rem;
                 }
             }
         }
@@ -829,6 +839,7 @@ export default class InsExpressWay extends Vue {
               color: white;
               background-color: @base_color;
               padding: 6px 24px;
+              font-size: 1.2rem;
             }
           .address_selected_other{
             position: relative;
@@ -844,6 +855,7 @@ export default class InsExpressWay extends Vue {
                   color: white;
                   background-color: rgba(0, 0, 0, .5);
                   cursor: pointer;
+                  font-size: 1.2rem;
                 }
                 .update_address{
                   padding: 6px 24px;
@@ -851,9 +863,11 @@ export default class InsExpressWay extends Vue {
                   color: white;
                   background-color: rgba(0, 0, 0, .5);
                   cursor: pointer;
+                  font-size: 1.2rem;
                 }
                 .heightLine{
                   background-color: @base_color;
+                  font-size: 1.2rem;
                 }
             }
           }
@@ -867,9 +881,17 @@ export default class InsExpressWay extends Vue {
         .selected_item{
           border: solid 2px @base_color;
         }
+        .address_item{
+          font-size: 1.2rem;
+        }
         }
     }
   }
+  /deep/ .in_select_main{
+              color: #333;
+              font-size: 1.2rem;
+                  line-height: 40px;
+            }
   .express_pickup,.store_pickup,.pickup_info{
     padding: 0 20px 20px 20px;
   }

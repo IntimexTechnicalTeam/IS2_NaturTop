@@ -23,12 +23,20 @@ export default class InsProductList extends Vue {
 }
 .product_item{
     box-sizing: border-box;
-    width: 22%;
+    width: 380px;
     float: left;
-    margin-right: 4%;
-    margin-bottom: 4%;
+    margin-right: 28px;
+    margin-bottom: 40px;
+    border: 2px solid #ebd9b6;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.3s;
 }
-.product_item:nth-child(4n){
+.product_item:hover{
+    background-color: #e1c58e;
+    border-radius: 6px;
+}
+.product_item:nth-child(3n){
     margin-right: 0%!important;
 }
 </style>

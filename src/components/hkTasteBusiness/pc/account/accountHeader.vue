@@ -135,6 +135,7 @@ ul,li{
       width: 100%;
       padding-top: 30px;
       padding-bottom: 30px;
+      background-size: cover;
       .innerBox{
         width: 1200px;
         margin: 0 auto;
@@ -153,6 +154,7 @@ ul,li{
             font-size: 24px;
             color:#FFF;
             margin-bottom: 30px;
+            text-align: center;
           }
           a{
             display: inline-block;
@@ -163,6 +165,11 @@ ul,li{
             img{
               width: 100%;
             }
+          }
+          .leftnav{
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         }
         .rightside{

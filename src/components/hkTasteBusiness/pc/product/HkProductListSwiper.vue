@@ -1,13 +1,16 @@
 <template>
-  <div class="productSearchSwiper">
-    <div class="swiper-container swiper-container-hot">
-        <swiper :options="swiperOption" ref="mySwiper">
-        <!-- slides -->
-        <swiperSlide v-for="(slide, index) in hotProducts" :key="index">
+  <div class="productSearchSwiper" :class="{'Engap': $Storage.get('locale') === 'E'}">
+    <div class="DetailTitle">
+        <div v-for="(slide, index) in hotProducts" :key="index">
           <img :src="slide.Image" class="BannerImg">
-        </swiperSlide>
-        </swiper>
-        <div class="TitleBg"><div class="innerBoxText">{{TitleName}}</div></div>
+        </div>
+        <div class="TitleBg"><div class="innerBoxText">{{hotTitleName}}</div></div>
+    </div>
+    <div class="productSearchtitle" >
+      <h2>{{hotTitleName}}</h2>
+      <p>
+        {{hotDuct}}
+      </p>
     </div>
   </div>
 </template>
@@ -17,6 +20,8 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper/src';
 @Component({ components: { swiper, swiperSlide } })
 export default class PkProductListSwiper extends Vue {
     hotProducts:any[]=[];
+    hotTitleName:string='';
+    hotDuct: string='';
     bannerImg: string = '';
     @Prop() private TitleName!: string;
     swiperOption: object = {
@@ -27,6 +32,9 @@ export default class PkProductListSwiper extends Vue {
     };
     loadHotProducts () {
       this.$Api.promotion.getPromotion('PromProductList', 0).then((result) => {
+        this.hotTitleName = result.Promotion.Name;
+        this.hotDuct = result.Promotion.Desc;
+        console.log(result, 'dddd');
         if (result.Promotion.BannerList.length > 0) {
           this.hotProducts = result.Promotion.BannerList;
         }
@@ -54,29 +62,98 @@ export default class PkProductListSwiper extends Vue {
     transform: translateX(-50%) translateY(-50%);
     left: 50%;
 }
-.TitleBg{
-  width: 500px;
-  height: 70px;
-  border:1px solid #ffffff;
-  margin: 0 auto;
-  padding: 10px;
-  margin-bottom: 20px;
-  position: absolute;
-  bottom: 10%;
-  left:50%;
-  z-index: 999;
-  transform: translateX(-50%) translateY(-50%);
-  .innerBoxText{
+.productSearchtitle{
+ h2{
+      text-align: center;
+
+      font-size: 36px;
+      font-family: 'SourceHanSans-Heavy';
+      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      -webkit-background-clip: text;
+      color: transparent;
+      display: flex;
+      justify-content: center;
+      width: 250px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+    }
+   p{
+      font-family: 'SourceHanSans-Regular';
+      font-size: 18px;
+      color: #333333;
+      text-align: center;
+      word-break: break-word;
+      margin-bottom: 20px;
+    }
+}
+.DetailTitle{
+  width: 100%;
+  // display: flex;
+  // flex-wrap:wrap;
+  // position: relative;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  img{
     width: 100%;
-    height: 100%;
-    background:#ffffff;
-    color: #333333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    font-weight: 700;
-    font-family: 'Arial';
+    height: 740px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    transition: all 0.3s;
+  }
+  .TitleBg{
+    width: 1200px;
+    margin: 0 auto;
+    position: absolute;
+    top: 210px;
+    transition: all 0.3s;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    .innerBoxText{
+        text-align: center;
+        font-size: 48px;
+        font-family: 'SourceHanSans-Heavy';
+        background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        -webkit-background-clip: text;
+        color: transparent;
+        width: 310px;
+        margin-left: 160px;
+        transition: all 0.3s;
+    }
+  }
+}
+.Engap{
+  .DetailTitle .TitleBg .innerBoxText{
+    font-size: 36px;
+  }
+}
+@media screen and (max-width: 1440px){
+  .DetailTitle{
+    .TitleBg{
+      top: 168px;
+      .innerBoxText{
+        width: 310px;
+        margin-left: 214px;
+      }
+    }
+    img{
+      height: 600px;
+    }
+  }
+}
+@media screen and (max-width: 1366px){
+  .DetailTitle{
+    .TitleBg{
+      top: 168px;
+      .innerBoxText{
+        width: 310px;
+        margin-left: 214px;
+      }
+    }
+    img{
+      height: 600px;
+    }
   }
 }
 </style>

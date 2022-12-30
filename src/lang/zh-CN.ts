@@ -98,7 +98,7 @@ export default {
     favorite: '加入我的清單',
     priceTitle: '價格',
     countTitle: '數量',
-    youWouldLike: '你可能喜歡',
+    youWouldLike: '猜你喜歡',
     moreTips: '點擊加載更多',
     none: '沒有了',
     noneInCat: '當前目錄無產品，請選擇其他目錄',
@@ -376,7 +376,7 @@ export default {
     SubTotal: '商品小計',
     PayBy: '支付方式',
     Couponcode: '優惠碼',
-    confirm: '保存地址',
+    confirm: '确定',
     Total: '共',
     BacktoShoppingCart: '返回購物車',
     Last: '上一頁',
@@ -489,7 +489,8 @@ export default {
     Resetall: '重置所有篩選條件',
     PriceHL: '價格從高至低',
     PriceLH: '價格從低至高',
-    Thatsall: '以上是全部內容'
+    Thatsall: '以上是全部內容',
+    shopping: '了解更多'
   },
   Action: {
     ReturnHomePage: '返回首頁',

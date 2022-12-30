@@ -1,16 +1,16 @@
 <template>
-    <div class="memberlogin">
-        <div class="menberCentral" @click="menberCentral">
-                  <img class="showMenberCentral" src="/images/mobile/Mobile-index_01.png">
-                    <div class="lang_flow" v-show="showMenberCentral" @click="memberCentral">
-                        <div data-to="/account/memberInfo" class="ii">{{$t('Account.MemberInformation')}}</div>
-                        <div data-to="/account/notification" class="ii">{{$t('Account.MyMessages')}}</div>
-                        <div data-to="/order/List" class="ii">{{$t('Account.MyOrder')}}</div>
-                        <div data-to="/account/deliveryAddress" class="ii">{{$t('Account.DeliveryAddress')}}</div>
-                        <div data-to="/account/mycoupon" class="ii">{{$t('MyCoupon.MyCoupon')}}</div>
-                        <div @click="logout">{{$t('Account.Logout')}}</div>
-                    </div>
-          </div>
+    <div class="memberlogin" v-click-outside="closeDialog">
+      <div class="menberCentral" @click="menberCentral">
+        <img class="showMenberCentral" src="/images/mobile/Mobile-index_01.png">
+        <div class="lang_flow" v-show="showMenberCentral" @click="memberCentral">
+            <div data-to="/account/memberInfo" class="ii">{{$t('Account.MemberInformation')}}</div>
+            <div data-to="/account/notification" class="ii">{{$t('Account.MyMessages')}}</div>
+            <div data-to="/order/List" class="ii">{{$t('Account.MyOrder')}}</div>
+            <div data-to="/account/deliveryAddress" class="ii">{{$t('Account.DeliveryAddress')}}</div>
+            <div data-to="/account/mycoupon" class="ii">{{$t('MyCoupon.MyCoupon')}}</div>
+            <div class="ii" @click="logout">{{$t('Account.Logout')}}</div>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -20,6 +20,10 @@ import Cookie from 'js-cookie';
 @Component
 export default class InsLangSwitch extends Vue {
   private showMenberCentral:boolean = false;
+
+  closeDialog () {
+    this.showMenberCentral = false;
+  }
   menberCentral () {
     if (!this.$Storage.get('isLogin')) {
       window.location.href = '/account/login';
@@ -33,6 +37,7 @@ export default class InsLangSwitch extends Vue {
       this.$router.push({
         path: target.dataset.to
       });
+      this.$store.dispatch('isShowMenu', false);
     }
   }
   logout () {
@@ -46,22 +51,22 @@ export default class InsLangSwitch extends Vue {
 </script>
 <style scoped lang="less">
   .menberCentral{
-    padding-left: 1rem;
-    padding-right: 1rem;
+    // padding-left: 1rem;
+    padding-right: 1.5rem;
     float: left;
     height: 3.5rem;
-    border-right: 1px solid #e6e6e6;
+    // border-right: 1px solid #e6e6e6;
     display: flex;
     align-items: center;
     justify-content: center;
     .lang_flow{
     position: absolute;
-    top: 3.8rem;
+    top: 6rem;
     left: 0px;
     width: 100%;
     background: #FFF;
     z-index: 999;
-    >div{
+    .ii{
       color:#000;
       font-size: 1.4rem;
       height: 4rem;

@@ -124,6 +124,7 @@ export default class InsShoppingcart extends Vue {
     let item:ShopCartItem = this.items.splice(one, 1)[0];
     this.$Api.shoppingCart.removeItem(item.Id).then(result => {
       this.$store.dispatch('setShopCart', this.$Api.shoppingCart.getShoppingCart());
+      if (this.ShoppingCart.Items.length === 0) this.$Confirm(this.$t('Message.Message'), this.$t('Shoppingcart.None'), () => { this.$router.push('/product/search/-'); }, () => { this.$router.push('/'); });
     });
   }
   next () {
@@ -252,9 +253,18 @@ export default class InsShoppingcart extends Vue {
 .shoppingcart_item_code,
 .shoppingcart_item_attr,
 .shoppingcart_item_price{
-    line-height: 2.5rem;
+    line-height: 1.6rem;
     font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
     // width: 10rem;
+}
+.shoppingcart_item_name{
+  overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
 }
 .shoppingcart_item_price >div{
     font-size: 1.2rem;

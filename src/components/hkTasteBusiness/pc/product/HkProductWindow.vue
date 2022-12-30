@@ -1,5 +1,5 @@
 <template>
-  <div class="PcVersion">
+  <div class="PcVersion product_item" :class="{'Engap': $Storage.get('locale') === 'E'}">
   <div class="productMain" v-if="item">
     <div class="in_pdWindow_page_item" :style="styla" @mouseenter="Enter=true" @mouseleave="Enter=false" @click="click">
       <div class="topWindowsImg imgbox">
@@ -12,9 +12,14 @@
         </div>
       </div>
         <div class="in_pdWindow_item_description">
-            <a  href="javascript:;" class="in_pdWindow_item_title" v-on:click="addCart(item)">{{item.Name}}</a>
-            <div class="in_pdWindow_item_price">
+            <a  href="javascript:;" class="in_pdWindow_item_title" v-on:click="addCart(item)" :title="item.Name">{{item.Name}}</a>
+            <div class="in_pdWindow_item_text" v-html="item.OverView" v-if="item.OverView"></div>
+            <div class="in_pdWindow_item_text" v-html="item.Description" v-if="item.Description"></div>
+            <!-- <div class="in_pdWindow_item_price">
               <inPrices :primePrices="item.ListPrice" :currentPrices="item.SalePrice" :currency="item.Currency" :DefaultListPrice="item.DefaultListPrice" :DefaultSalePrice="item.DefaultSalePrice" :DefaultCurrency="item.DefaultCurrency" size="small"></inPrices>
+            </div> -->
+            <div class="buy" v-if="$route.name !== 'ProductsDetail'">
+              <a href="javascript:;" v-on:click="addCart(item)">{{$t('product.buyNow')}}</a>
             </div>
         </div>
     </div>
@@ -116,13 +121,17 @@ export default class InsProductWindow extends Vue {
   color: #999;
   display: inline-block;
 }
-.productMain:hover .in_pdWindow_page_item img {
-    border: 1px solid #cd0909;
-}
-.productMain:hover .in_pdWindow_item_title {
-    transform: translateY(-3px);
-    color: #cd0909!important;
-}
+// .productMain:hover .in_pdWindow_page_item img {
+//     border: 1px solid #cd0909;
+// }
+// .productMain:hover .in_pdWindow_item_title {
+//     transform: translateY(-3px);
+//     color: #cd0909!important;
+// }
+// .PcVersion:hover {
+//   background-color: #e1c58e;
+//   border-radius: 5px;
+// }
 </style>
 <style lang="less" scoped>
 .imgbox{
@@ -193,43 +202,109 @@ export default class InsProductWindow extends Vue {
 .imgbox img{
     width: 100%;
     border-radius:0px;
-    border:1px solid #020202;
+    // border:1px solid #020202;
     transition: border all 1s;
     box-sizing: border-box;
+    display: block;
 }
 .imgbox img:hover{
-    border:1px solid #e02533;
+    // border:1px solid #e02533;
 }
 .in_pdWindow_page_item img {
   box-sizing: border-box;
   cursor: pointer;
-  border: 1px solid #cdcdcd;
+  // border: 1px solid #cdcdcd;
   border-radius:0px;
 }
-.height_line {
-  border: 1px solid black !important;
-}
+// .height_line {
+//   border: 1px solid black !important;
+// }
 .in_pdWindow_item_title {
-    font-size: 1.4rem;
-    width: 90%;
+    font-size: 24px;
+    width: 96%;
     margin: 0 auto;
-    word-break: break-all;
     text-align: center;
-    color: #0b0b0b;
+    color: #d9b672;
     display: inline-block;
     text-align: center;
-    line-height: 25px;
+    line-height: 32px;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     word-break: break-word;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-family: 'SourceHanSans-Regular';
+    font-weight: bold;
 }
 .in_pdWindow_item_code {
   margin-top: 1rem;
   color: #999999;
   text-align: center;
+}
+.productMain{
+  // border: 2px solid #ebd9b6;
+  // border-radius: 6px;
+  // background-color: #fff;
+  transition: all 0.3s;
+  overflow: hidden;
+  .in_pdWindow_item_description{
+    .buy{
+      text-align: center;
+      margin-bottom: 18px;
+      a{
+        padding: 0 24px;
+        height: 34px;
+        background-color: #d9b672;
+        border-radius: 6px;
+        text-align: center;
+        line-height: 32px;
+        font-family: 'SourceHanSans-Regular';
+        color: #fff;
+        display: inline-block;
+        border: 1px solid #fff;
+        box-sizing: border-box;
+      }
+    }
+    .in_pdWindow_item_text{
+      text-align: center;
+      /deep/ p{
+        margin-bottom: 16px;
+        color: #666666;
+      }
+    }
+  }
+  &:hover{
+    // background-color: #e1c58e;
+    .in_pdWindow_item_description{
+      .in_pdWindow_item_title{
+        color: #fff;
+      }
+      .in_pdWindow_item_text{
+        /deep/ p{
+          color: #fff;
+        }
+      }
+      .buy{
+        a{
+          border: 1px solid #fff;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+.Engap{
+  .productMain .in_pdWindow_item_description .buy a{
+    line-height: 32px;
+  }
+}
+.product_item{
+  transition: all 0.3s;
+}
+.product_item:hover{
+  background-color: #e1c58e;
+  border-radius: 6px;
 }
 </style>

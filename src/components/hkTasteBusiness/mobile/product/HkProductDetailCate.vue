@@ -1,23 +1,23 @@
 <template>
 <div class="cateMain">
   <!-- 获取所在的产品目录 -->
-  <div  class="detail-select-attribute" v-for="(cat,index) in cateTree" :key="'cat'+index">
+  <!-- <div  class="detail-select-attribute" v-for="(cat,index) in cateTree" :key="'cat'+index">
     <div>
       <ul class="common-select">
         <li v-if="cat.ParentId!=0">{{cat.Name}}</li>
       </ul>
       <div class="clear"></div>
     </div>
-  </div>
+  </div> -->
     <!-- 获取所在的产品非库存属性 -->
-  <div  class="detail-select-attribute" v-for="(attr,index) in source" :key="'attr'+index">
+  <!-- <div  class="detail-select-attribute" v-for="(attr,index) in source" :key="'attr'+index">
     <div v-if="attr.length>0">
       <ul class="common-select">
         <li v-for="(one,index) in attr" :key="'sub'+index">{{one.Name}}</li>
       </ul>
       <div class="clear"></div>
     </div>
-  </div>
+  </div> -->
   </div>
 </template>
 <script lang="ts">

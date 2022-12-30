@@ -381,7 +381,8 @@ this.error =
       border-left: 0;
       border-right: 0;
       border-bottom: 0;
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: #DCDFE6;
+      border-radius: 4px;
     }
     .my_textarea {
       border-top: 0;

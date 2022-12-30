@@ -578,12 +578,38 @@ export default class InsCheckoutN extends Vue {
     }
   }
   .el-checkbox__input.is-checked+.el-checkbox__label {
-      color: @primary_color2;
-      border: solid 1px @primary_color2;
+      color: @primary_color2 !important;
+      border: solid 1px @primary_color2 !important;
+      box-sizing: border-box;
+      .coupon_title{
+        background-color: #d9b672 !important;
+      }
+      .coupon_is_valid{
+        background-color: #d9b672 !important;
+      }
+      .coupon_item{
+        border: none !important;
+      }
+      .coupon_remark, .coupon_expiryDate{
+        color: #d9b672 !important;
+      }
+
   }
   .el-checkbox__label{
       // color: @primary_color2;
       border: solid 1px transparent;
+  }
+  .is-disabled{
+    box-sizing: border-box;
+    .coupon_title{
+      background-color: #C0C4CC !important;
+    }
+    .coupon_is_valid{
+      background-color: #C0C4CC !important;
+    }
+    .coupon_remark, .coupon_expiryDate{
+        color: #C0C4CC !important;
+      }
   }
 }
 </style>
@@ -761,7 +787,7 @@ export default class InsCheckoutN extends Vue {
       right: 0;
       width: 50%;
       height: 75%;
-      background-color: black;
+      background-color: @base_color;
       color: white;
       transform:translate(50%, -50%) rotateZ(45deg);
       .valid_content{
@@ -831,7 +857,8 @@ export default class InsCheckoutN extends Vue {
 }
 .promotionCodeTips{
   text-align: right;
-  color:#262626;
+  color: #d92526;
+  font-size: 12px;
 }
 .DefaultCurrency {
   float: right;
@@ -915,20 +942,20 @@ export default class InsCheckoutN extends Vue {
 .shoppingcart_item_code,
 .shoppingcart_item_attr,
 .shoppingcart_item_price{
-    font-size: 12px;
+    font-size: 14px;
     padding: 6px 0;
     span{
-        font-size: 12px;
+        font-size: 14px;
     }
     div{
-        font-size: 12px;
+        font-size: 144px;
     }
 }
 .shoppingcart_item_qty{
     display: flex;
     justify-content: space-between;
     .qty_count{
-        font-size: 12px;
+        font-size: 14px;
         line-height: 26px;
     }
     .Sabg{

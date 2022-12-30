@@ -3,7 +3,6 @@
     <div class="ProducBanner">
       <ProductListSwiper
         class="innerBanner"
-        :TitleName="$t('product.Producttitle')"
       />
     </div>
     <div class="ProductSearch">
@@ -17,7 +16,7 @@
           />
         </div>
       </div>
-      <div class="selectBar">
+      <!-- <div class="selectBar">
         <ul>
           <li @click="showSearchSlide">
             <span class="el-icon-s-operation"></span
@@ -35,12 +34,12 @@
             </select>
           </li>
         </ul>
-      </div>
+      </div> -->
       <!-- <advancedSearch :attrType="2"  @advancedChange="advancedChange" /> -->
       <transition name="slide">
         <div key="1" v-if="!waiting">
           <div class="prolist-box" v-if="proList.length > 0">
-            <ins-productList :column="4" :allItems="proList" />
+            <ins-productList :column="3" :allItems="proList" />
             <div class="pager" v-if="totalRecord > pageSize">
               <InsPage
                 :total="totalRecord"
@@ -88,7 +87,7 @@ import $ from 'jquery';
 export default class InsProductSearch extends Vue {
   proList: YouWouldLike[] = []; // 产品数据
   currentPage: number = 1; // 当前页
-  pageSize: number = 16; // 每页显示条目个数
+  pageSize: number = 6; // 每页显示条目个数
   totalRecord: number = 0; // 总条目数
   private tips: boolean = true;
   private LoadingInstance!: any;
@@ -150,6 +149,7 @@ export default class InsProductSearch extends Vue {
         })
         .then(result => {
           this.proList = result.YouWouldLike;
+          console.log(result, '获取产品');
           this.totalRecord = result.TotalRecord;
           this.waiting = false;
           this.$HiddenLayer();
