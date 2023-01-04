@@ -75,18 +75,26 @@ export default class PkProductListSwiper extends Vue {
     width: 100%;
   }
   .TitleBg{
-    top: 12rem;
+    top: 5rem;
     position: absolute;
-    left: 5rem;
+    left: 2.2rem;
+    text-align: center;
+    height: 17rem;
+    display: flex;
+    align-items: center;
     .innerBoxText{
       text-align: center;
       font-size: 2.4rem;
       font-family: 'SourceHanSans-Heavy';
-      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      -webkit-background-clip: text;
-      color: transparent;
-      display: flex;
-      justify-content: center;
+      // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      // -webkit-background-clip: text;
+      // color: transparent;
+      // display: flex;
+      // justify-content: center;
+      background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      color: #000;
+      padding: 0.3rem 2.5rem;
+      display: table;
     }
   }
   .TitleBgNo{
@@ -120,12 +128,20 @@ export default class PkProductListSwiper extends Vue {
 }
 .Engap{
   .DetailTitle .TitleBg{
-    top: 13rem;
+    top: 5rem;
     position: absolute;
-    left: 3rem;
-    width: 13.4rem;
+    left: 1rem;
+    /* width: 14rem; */
+    text-align: center;
+    height: 17rem;
+    display: flex;
+    align-items: center;
     .innerBoxText{
-      font-size: 1.8rem;
+      font-size: 2rem;
+      word-break: keep-all;
+      line-height: 2.4rem;
+      width: 14rem;
+      padding: 0.3rem 2rem;
     }
   }
 

@@ -768,12 +768,16 @@ export default class InsCmsContent extends Vue {
         text-align: center;
         font-size: 48px;
         font-family: 'SourceHanSans-Heavy';
-        background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-        -webkit-background-clip: text;
-        color: transparent;
-        width: 310px;
+        // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        // -webkit-background-clip: text;
+        // color: transparent;
+        // width: 310px;
         margin-left: 160px;
         transition: all 0.3s;
+        background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        color: #000;
+        padding: 5px 60px;
+        display: table;
     }
   }
   .TitleBgNo{
@@ -783,7 +787,7 @@ export default class InsCmsContent extends Vue {
     width: 100%;
     .innerBoxText{
       margin: 0;
-      height: 4rem;
+      // height: 4rem;
       margin: 0 auto;
     }
   }
@@ -1096,17 +1100,20 @@ export default class InsCmsContent extends Vue {
 .Engap{
   .DetailTitle {
     .TitleBg {
-      top: 40px;
+      top: 210px;
       .innerBoxText{
         font-size: 38px;
         // width: 245px;
-        margin-left: 146px;
+        margin-left: 8rem;
         line-height: 38px;
         word-break: keep-all;
-        height: 24rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+        padding: 10px 45px;
+        width: 350px;
+        box-sizing: border-box;
+        // height: 24rem;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
       }
     }
 
@@ -1118,7 +1125,7 @@ export default class InsCmsContent extends Vue {
     .TitleBg{
       // top: 168px !important;
       .innerBoxText{
-        width: 310px;
+        // width: 310px;
         margin-left: 214px;
       }
     }
@@ -1140,21 +1147,21 @@ export default class InsCmsContent extends Vue {
   .Engap{
   .DetailTitle {
     .TitleBg {
-      top: 38px;
+      top: 170px;
       .innerBoxText{
-        font-size: 34px;
-        width: 245px;
-        margin-left: 246px;
+        font-size: 38px;
+        // width: 245px;
+        margin-left: 11rem;
         line-height: 38px;
         word-break: keep-all;
-        height: 19rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        // height: 19rem;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
       }
     }
     .TitleBgEng{
-      top: 54px;
+      top: 170px;
     }
   }
 }
@@ -1164,14 +1171,14 @@ export default class InsCmsContent extends Vue {
     .TitleBg{
       top: 168px;
       .innerBoxText{
-        width: 310px;
+        // width: 310px;
         margin-left: 214px;
       }
     }
     .TitleBgNo{
       .innerBoxText{
-        height: 4rem;
-        margin: 50px auto;
+        // height: 4rem;
+        // margin: 50px auto;
         // width: 100%;
       }
 
@@ -1183,21 +1190,21 @@ export default class InsCmsContent extends Vue {
   .Engap{
   .DetailTitle {
     .TitleBg {
-      top: 38px;
+      top: 170px;
       .innerBoxText{
-        font-size: 34px;
-        width: 245px;
-        margin-left: 246px;
+        font-size: 38px;
+        // width: 245px;
+        margin-left: 12.5rem;
         line-height: 38px;
         word-break: keep-all;
-        height: 19rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        // height: 19rem;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
       }
     }
     .TitleBgEng{
-      top: 54px;
+      top: 170px;
     }
   }
 }

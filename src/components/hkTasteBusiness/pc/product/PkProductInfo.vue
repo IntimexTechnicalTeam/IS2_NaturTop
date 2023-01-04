@@ -4,7 +4,7 @@
       <p style="width: 88%;">{{panelDetail.Name}}</p>
       <div class="OverView" v-html="panelDetail.OverView"></div>
       <div class="fix">
-        <div class="ProductCode">{{$t("product.ProductCode")}}:{{panelDetail.Code}}</div>
+        <!-- <div class="ProductCode">{{$t("product.ProductCode")}}:{{panelDetail.Code}}</div> -->
         <!-- <div class="ProductRate">
           <Rate  v-model="panelDetail.Score" disabled  disabled-void-color="#5f6548" disabled-void-icon-class="el-icon-star-off"></Rate>
         </div> -->

@@ -114,18 +114,23 @@ export default class PkProductListSwiper extends Vue {
         text-align: center;
         font-size: 48px;
         font-family: 'SourceHanSans-Heavy';
-        background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-        -webkit-background-clip: text;
-        color: transparent;
-        width: 310px;
-        margin-left: 160px;
+        // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        // -webkit-background-clip: text;
+        // color: transparent;
+        // width: 310px;
+        margin-left: 124px;
         transition: all 0.3s;
+        background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        color: #000;
+        padding: 5px 80px;
+        display: table;
     }
   }
 }
 .Engap{
   .DetailTitle .TitleBg .innerBoxText{
     font-size: 36px;
+    margin-left: 112px;
   }
 }
 @media screen and (max-width: 1440px){
@@ -133,12 +138,19 @@ export default class PkProductListSwiper extends Vue {
     .TitleBg{
       top: 168px;
       .innerBoxText{
-        width: 310px;
+        // width: 310px;
         margin-left: 214px;
+        padding: 5px 60px;
       }
     }
     img{
       height: 600px;
+    }
+  }
+  .Engap{
+  .DetailTitle .TitleBg .innerBoxText{
+      font-size: 36px;
+      margin-left: 200px;
     }
   }
 }
@@ -147,13 +159,20 @@ export default class PkProductListSwiper extends Vue {
     .TitleBg{
       top: 168px;
       .innerBoxText{
-        width: 310px;
+        // width: 310px;
         margin-left: 214px;
+        padding: 5px 60px;
       }
     }
     img{
       height: 600px;
     }
   }
+  .Engap{
+  .DetailTitle .TitleBg .innerBoxText{
+    font-size: 36px;
+    margin-left: 200px;
+  }
+}
 }
 </style>
