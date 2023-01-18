@@ -507,7 +507,7 @@ export default class InsCmsContent extends Vue {
     .btn-default{
       // width: 40%;
       // float: right;
-      background: #d9b672;
+      background: @buy_color;
       height: 3.5rem;
       line-height: 3.5rem;
       color:#fff;
@@ -580,7 +580,7 @@ export default class InsCmsContent extends Vue {
   .TitleBg{
     top: 5rem;
     position: absolute;
-    left: 2.2rem;
+    left: 4.7rem;
     text-align: center;
     height: 17rem;
     display: flex;
@@ -589,17 +589,17 @@ export default class InsCmsContent extends Vue {
       text-align: center;
       font-size: 2.4rem;
       font-family: 'SourceHanSans-Heavy';
-      // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      // -webkit-background-clip: text;
-      // color: transparent;
-      // display: flex;
-      // justify-content: center;
-      // height: 16rem;
-      // align-items: center;
-      background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      color: #000;
-      padding: 0.3rem 2.5rem;
-      display: table;
+      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      -webkit-background-clip: text;
+      color: transparent;
+      display: flex;
+      justify-content: center;
+      height: 16rem;
+      align-items: center;
+      // background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      // color: #000;
+      // padding: 0.3rem 2.5rem;
+      // display: table;
     }
   }
   .TitleBgNo{
@@ -731,9 +731,9 @@ export default class InsCmsContent extends Vue {
 
             font-size: 2rem;
             font-family: 'SourceHanSans-Heavy';
-            background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-            -webkit-background-clip: text;
-            color: transparent;
+            // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+            // -webkit-background-clip: text;
+            color: #d9b672;
             display: flex;
             justify-content: center;
             letter-spacing: 2px;
@@ -759,9 +759,9 @@ export default class InsCmsContent extends Vue {
 
       font-size: 2rem;
       font-family: 'SourceHanSans-Heavy';
-      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      -webkit-background-clip: text;
-      color: transparent;
+      // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      // -webkit-background-clip: text;
+      color: #d9b672;
       display: flex;
       justify-content: center;
       letter-spacing: 2px;
@@ -805,9 +805,10 @@ export default class InsCmsContent extends Vue {
 
       font-size: 2rem;
       font-family: 'SourceHanSans-Heavy';
-      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      -webkit-background-clip: text;
-      color: transparent;
+      // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      // -webkit-background-clip: text;
+      // color: transparent;
+      color: #d9b672;
       display: flex;
       justify-content: center;
       letter-spacing: 2px;
@@ -901,9 +902,9 @@ export default class InsCmsContent extends Vue {
       text-align: center;
       font-size: 2rem;
       font-family: 'SourceHanSans-Heavy';
-      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      -webkit-background-clip: text;
-      color: transparent;
+      // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      // -webkit-background-clip: text;
+      color: #d9b672;
       // width: 310px;
       // margin-left: 160px;
       transition: all 0.3s;
@@ -962,18 +963,18 @@ export default class InsCmsContent extends Vue {
   .DetailTitle .TitleBg {
     top: 5rem;
     position: absolute;
-    left: 1rem;
-    /* width: 14rem; */
+    left: 2.5rem;
+    width: 14rem;
     text-align: center;
     height: 17rem;
     display: flex;
     align-items: center;
     .innerBoxText{
-      font-size: 2rem;
+      font-size: 1.9rem;
       word-break: keep-all;
       line-height: 2.4rem;
       width: 14rem;
-      padding: 0.3rem 2rem;
+      // padding: 0.3rem 2rem;
     }
   }
   .CmsContent /deep/ table.aboutus_table tbody tr td>h2:first-child{

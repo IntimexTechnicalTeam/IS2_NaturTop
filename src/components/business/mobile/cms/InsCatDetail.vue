@@ -225,7 +225,7 @@ export default class insNews extends Vue {
     .TitleBg{
       top: 5rem;
       position: absolute;
-      left: 2.2rem;
+      left: 4.7rem;
       text-align: center;
       height: 17rem;
       display: flex;
@@ -234,17 +234,17 @@ export default class insNews extends Vue {
         text-align: center;
         font-size: 2.4rem;
         font-family: 'SourceHanSans-Heavy';
-        // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-        // -webkit-background-clip: text;
-        // color: transparent;
-        // display: flex;
-        // justify-content: center;
-        // height: 16rem;
-        // align-items: center;
-        background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-        color: #000;
-        padding: 0.3rem 2.5rem;
-        display: table;
+        background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        -webkit-background-clip: text;
+        color: transparent;
+        display: flex;
+        justify-content: center;
+        height: 16rem;
+        align-items: center;
+        // background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        // color: #000;
+        // padding: 0.3rem 2.5rem;
+        // display: table;
       }
     }
     .TitleBgNo{
@@ -270,9 +270,9 @@ export default class insNews extends Vue {
       margin-bottom: 1rem;
       font-size: 2.4rem;
       font-family: 'SourceHanSans-Heavy';
-      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      -webkit-background-clip: text;
-      color: transparent;
+      // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      // -webkit-background-clip: text;
+      color: #d9b672;
       display: flex;
       justify-content: center;
 
@@ -291,7 +291,7 @@ export default class insNews extends Vue {
 .PageStyle1{
   .content{
     // border: 6px solid #d9b672;
-    background-color: #d9b672;
+    background-color: #DC9D18;
     border-radius: 4px;
     padding: 2rem 1rem ;
     box-sizing: border-box;
@@ -371,8 +371,8 @@ export default class insNews extends Vue {
   .DetailTitle .TitleBg {
     top: 5rem;
     position: absolute;
-    left: 2rem;
-    /* width: 14rem; */
+    left: 3rem;
+    width: 13rem;
     text-align: center;
     height: 16rem;
     display: flex;
@@ -381,7 +381,7 @@ export default class insNews extends Vue {
       font-size: 2rem;
       word-break: keep-all;
       line-height: 2.4rem;
-      width: 10rem;
+      // width: 10rem;
     }
   }
 }

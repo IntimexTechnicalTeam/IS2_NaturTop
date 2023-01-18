@@ -306,7 +306,7 @@ export default class InsMemberInfo extends Vue {
 .MembercenterMobile .MemberInfoMain .el-button{
     width: 100%;
     display: block;
-    background: #d9b672;
+    background: @buy_color;
     background-size: 100%;
     height: 4rem;
     border:0px!important;

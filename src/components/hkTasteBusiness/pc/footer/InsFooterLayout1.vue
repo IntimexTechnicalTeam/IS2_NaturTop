@@ -64,7 +64,7 @@
         </div>
         <p class="footercopy">
              <span>Copyright {{currentYear}} © Natur Top Powerd by Eventizer
-               <a href="https://www.intimex.hk/" target="_blank">
+               <a href="https://eventizer.hk/" target="_blank">
                <img src="/images/pc/footerlogo.png">
                </a>
               </span>
@@ -172,7 +172,7 @@ export default class InsFooterLayout1 extends Vue {
 /* 底部文件 */
 .footbg{
     // background: #9f2f34 url('/images/pc/pcindex_05.jpg') no-repeat center bottom;
-    background-color: #d9b672;
+    background-color: #2DB368;
     background-size: cover;
     width: 100%;
     display: inline-block;
@@ -227,7 +227,7 @@ export default class InsFooterLayout1 extends Vue {
 .footerLeft > ul >li{
     // width: 100%;
     // line-height: 30px;
-        padding: 0 30px;
+        padding: 0 26px;
 }
 .footerLeft > ul >li >a{
     font-size:20px;

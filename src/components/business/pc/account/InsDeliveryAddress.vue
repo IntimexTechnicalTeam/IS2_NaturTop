@@ -448,8 +448,8 @@ export default class InsDeliveryAddress extends Vue {
 </style>
 <style lang="less" scoped>
 .OrderBtn{
-  background: @base_color!important;
-  border:@base_color!important;
+  background: @buy_color!important;
+  border:@buy_color!important;
 }
 /*我的最爱*/
 #main-content {
@@ -582,7 +582,7 @@ export default class InsDeliveryAddress extends Vue {
 }
 
 .btn-box .el-button {
-    background: #d9b672;
+    background: @buy_color;
     border: none;
     display: block;
     border-radius: 5px;

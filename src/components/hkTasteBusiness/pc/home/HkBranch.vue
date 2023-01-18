@@ -160,9 +160,9 @@ export default class PkNews extends Vue {
       margin-bottom: 10px;
       font-size: 36px;
       font-family: 'SourceHanSans-Heavy';
-      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      -webkit-background-clip: text;
-      color: transparent;
+      // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      // -webkit-background-clip: text;
+      color: #d9b672;
       display: flex;
       justify-content: center;
 

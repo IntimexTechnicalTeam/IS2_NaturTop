@@ -7,23 +7,23 @@
       /></a>
 
       <span v-show="show">
-        <a href="tel:85298765436" class="fb-button" target="_blank"
+        <a href="https://www.instagram.com/natur.topp/?hl=en" class="fb-button" target="_blank"
           ><img src="/static/Image/mobile/home/ig.png"
         /></a>
         <a href="javascript:;" class="livechat" @click="showLivechat"
           ><img src="/static/Image/mobile/home/facebook.png"
         /></a>
 
-        <a href="mailto:info@hktaste.com.hk" class="fb-button"
+        <a href="mailto:wellfit.resources@gmail.com" class="fb-button"
           ><img src="/static/Image/mobile/home/news.png"
         /></a>
         <a
-          href="https://api.whatsapp.com/send?phone=8529876%205436&text=%E6%88%91%E6%83%B3%E6%9F%A5%E8%AF%A2%E4%B8%80%E4%B8%8B"
+          href="https://api.whatsapp.com/send?phone=85262155461&text=%E6%88%91%E6%83%B3%E6%9F%A5%E8%AF%A2%E4%B8%80%E4%B8%8B"
           target="_blank"
           ><img src="/static/Image/mobile/home/whatsapp.png"
         /></a>
       </span>
-      <a href="javascript:void(0);" @click="toTop"
+      <a href="javascript:void(0);" @click="goToTop()"
         ><img src="/static/Image/mobile/home/down.png"
       /></a>
     </div>
@@ -34,7 +34,7 @@
         <div class="ctrlq fb-close"></div>
         <div
           class="fb-page"
-          data-href="https://www.facebook.com/hktastefood/"
+          data-href="https://www.facebook.com/profile.php?id=100083932164270"
           data-tabs="messages"
           :data-width="userAgent=='pc'?360:320"
           data-height="400"
@@ -43,19 +43,19 @@
           data-show-facepile="false"
         >
           <blockquote
-            cite="https://www.facebook.com/hktastefood/"
+            cite="https://www.facebook.com/profile.php?id=100083932164270"
             class="fb-xfbml-parse-ignore"
           ></blockquote>
         </div>
         <div class="fb-credit">
-          <a href="https://www.facebook.com/hktastefood/" target="_blank"
-            >Facebook Chat Widget by Style3-New</a
+          <a href="https://www.facebook.com/profile.php?id=100083932164270" target="_blank"
+            >Facebook Chat Widget by 樂穗牌 Natur Top</a
           >
         </div>
         <div id="fb-root"></div>
       </div>
       <a
-        href="https://www.facebook.com/hktastefood/"
+        href="https://www.facebook.com/profile.php?id=100083932164270"
         title="Send us a message on Facebook"
         class="ctrlq fb-button"
       ></a>
@@ -94,6 +94,19 @@ export default class InsSidebar extends Vue {
     //     this.isShow = false;
     //   }
     // });
+  }
+
+  goToTop() {
+    let top = document.documentElement.scrollTop;
+
+    const timeTop = setInterval(() => {
+      document.documentElement.scrollTop = top -= 50;
+
+      if (top <= 0) {
+        clearInterval(timeTop);
+      }
+    }, 10);
+    this.show = false;
   }
 
   mounted() {
@@ -151,9 +164,10 @@ export default class InsSidebar extends Vue {
 
 @media screen and (max-width: 768px) {
   .fb-widget {
-    width: 320px;
-    height: 435px;
-    right:15px;
+    width: 26rem;
+    height: 38rem;
+    right: 4rem;
+    bottom: -2rem;
   }
 }
 @media screen and (min-width: 769px) {

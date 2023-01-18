@@ -73,7 +73,7 @@ export default class InsButton extends Vue {
 
 }
 .primary {
-  background-color: @primary_color;
+  background-color: @buy_color;
   color: white;
 }
 .primary2{

@@ -665,7 +665,7 @@ export default class InsDeliveryAddress extends Vue {
     width: 100%;
     margin: 0 auto;
     display: block;
-    background: #d9b672;
+    background: @buy_color;
     background-size: cover;
     border:0px!important;
 }

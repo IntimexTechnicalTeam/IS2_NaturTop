@@ -92,7 +92,7 @@ export default class InsComfirm extends Vue {
   opacity: 0;
 }
 .primary {
-  background-color: @primary_color;
+  background-color: @buy_color;
   color: white;
 }
 </style>

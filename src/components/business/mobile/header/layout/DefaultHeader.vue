@@ -61,10 +61,10 @@ export default class DefaultHeader extends Vue {
 
 <style scoped lang="less">
     .header-box {
-      background-color: #d9b672;
+      background-color: #2DB368;
       .flex-box {
         height: 6rem;
-        background-color: #d9b672;
+        background-color: #2DB368;
         position: relative;
         display: flex;
         justify-content: space-between;

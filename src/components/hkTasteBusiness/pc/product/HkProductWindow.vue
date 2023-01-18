@@ -256,7 +256,7 @@ export default class InsProductWindow extends Vue {
       a{
         padding: 0 24px;
         height: 34px;
-        background-color: #d9b672;
+        background-color: @buy_color;
         border-radius: 6px;
         text-align: center;
         line-height: 32px;

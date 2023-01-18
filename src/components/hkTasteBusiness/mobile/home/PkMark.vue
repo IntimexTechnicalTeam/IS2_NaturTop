@@ -75,9 +75,9 @@ export default class PkNews extends Vue {
           margin-bottom: 10px;
           font-size: 3rem;
           font-family: 'SourceHanSans-Heavy';
-          background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-          -webkit-background-clip: text;
-          color: transparent;
+          // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+          // -webkit-background-clip: text;
+          color: #d9b672;
           display: flex;
           justify-content: center;
 
@@ -103,7 +103,7 @@ export default class PkNews extends Vue {
           a{
             padding: 0 2rem;
             height: 3rem;
-            background-color: #d9b672;
+            background-color: @buy_color;
             border-radius: 6px;
             text-align: center;
             line-height: 3rem;

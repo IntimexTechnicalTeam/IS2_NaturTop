@@ -117,9 +117,9 @@ export default class PkLiveBox extends Vue {
       margin-bottom: 1rem;
       font-size: 3rem;
       font-family: 'SourceHanSans-Heavy';
-      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      -webkit-background-clip: text;
-      color: transparent;
+      // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      // -webkit-background-clip: text;
+      color: #d9b672;
       display: flex;
       justify-content: center;
 

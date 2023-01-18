@@ -223,7 +223,7 @@ export default class InsModifyPassword extends Vue {
   margin-left: 0px!important;
 }
 .MemberInfoMain .el-button{
-    background: #d9b672;
+    background: @buy_color;
     border: none;
     display: block;
     border-radius: 5px;

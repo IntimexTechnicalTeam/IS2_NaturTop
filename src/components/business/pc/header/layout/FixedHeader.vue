@@ -48,7 +48,7 @@ export default class FixedHeader extends Vue {
   z-index: 9999;
   // box-shadow: 0 0 10px 0 #d4d5d1;
   /deep/ .headerBg{
-    background-color: #d9b672;
+    background-color: #2DB368;
     box-shadow: 0 0 10px #333333;
     .headerTop{
       padding-top: 10px;

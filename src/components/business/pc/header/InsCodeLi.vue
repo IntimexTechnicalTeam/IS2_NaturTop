@@ -27,10 +27,12 @@ export default class InsCodeLi extends Vue {
   }, {
     Id: '2',
     Name: 'USD'
-  }, {
-    Id: '3',
-    Name: 'RMB'
-  }];
+  }
+  // {
+  //   Id: '3',
+  //   Name: 'RMB'
+  // }
+  ];
   codeId:number=1;
 
   get showFixedHeader () {

@@ -123,7 +123,7 @@ export default class PkNews extends Vue {
   box-sizing: border-box;
   .conceptbox{
     width: 100%;
-    background-color: #d9b672;
+    background-color: #DC9D18;
     padding: 0 1.5rem;
     position: relative;
     box-sizing: border-box;
@@ -204,12 +204,13 @@ export default class PkNews extends Vue {
         // width: 140px;
         padding: 0 2rem;
         height: 3rem;
-        border: 1px solid #fff;
+        // border: 1px solid #fff;
+        background-color: #fff;
         border-radius: 6px;
         text-align: center;
         line-height: 3rem;
         font-family: 'SourceHanSans-Regular';
-        color: #fff;
+        color: #DC9D18;
       }
     }
   }

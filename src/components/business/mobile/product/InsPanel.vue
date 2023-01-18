@@ -353,9 +353,9 @@ export default class InsPanel extends Vue {
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      background-color: #e27368;
+      background-color: #244871;
       color: #fff;
-      border-radius: 3px;
+      border-radius: 5px;
       margin-bottom: 1rem;
       border:none;
       text-transform: uppercase;

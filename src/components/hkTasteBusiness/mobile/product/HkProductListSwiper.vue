@@ -77,7 +77,7 @@ export default class PkProductListSwiper extends Vue {
   .TitleBg{
     top: 5rem;
     position: absolute;
-    left: 2.2rem;
+    left: 5rem;
     text-align: center;
     height: 17rem;
     display: flex;
@@ -86,15 +86,15 @@ export default class PkProductListSwiper extends Vue {
       text-align: center;
       font-size: 2.4rem;
       font-family: 'SourceHanSans-Heavy';
-      // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      // -webkit-background-clip: text;
-      // color: transparent;
-      // display: flex;
-      // justify-content: center;
-      background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      color: #000;
-      padding: 0.3rem 2.5rem;
-      display: table;
+      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      -webkit-background-clip: text;
+      color: transparent;
+      display: flex;
+      justify-content: center;
+      // background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      // color: #000;
+      // padding: 0.3rem 2.5rem;
+      // display: table;
     }
   }
   .TitleBgNo{
@@ -108,9 +108,10 @@ export default class PkProductListSwiper extends Vue {
 
     font-size: 2rem;
     font-family: 'SourceHanSans-Heavy';
-    background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-    -webkit-background-clip: text;
-    color: transparent;
+    // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+    // -webkit-background-clip: text;
+    // color: transparent;
+    color: #d9b672;
     display: flex;
     justify-content: center;
     letter-spacing: 2px;
@@ -130,8 +131,8 @@ export default class PkProductListSwiper extends Vue {
   .DetailTitle .TitleBg{
     top: 5rem;
     position: absolute;
-    left: 1rem;
-    /* width: 14rem; */
+    left: 2.5rem;
+    width: 14rem;
     text-align: center;
     height: 17rem;
     display: flex;
@@ -141,7 +142,7 @@ export default class PkProductListSwiper extends Vue {
       word-break: keep-all;
       line-height: 2.4rem;
       width: 14rem;
-      padding: 0.3rem 2rem;
+      // padding: 0.3rem 2rem;
     }
   }
 

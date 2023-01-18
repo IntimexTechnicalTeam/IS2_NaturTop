@@ -59,7 +59,7 @@
     </div>
     <div class="footerCpy">
             <p>Copyright {{currentYear}} © Natur Top Powerd by Eventizer
-            <a href="https://www.intimex.hk/" target="_blank">
+            <a href="https://eventizer.hk/" target="_blank">
               <img src="/images/mobile/footerlogo.png">
             </a>
             </p>
@@ -173,7 +173,7 @@ export default class InsFooter extends Vue {
 #footer{
   width: 100%;
   // background: url('/images/mobile/MobileIndex_04.jpg') no-repeat center center;
-  background-color: #d9b672;
+  background-color: #2DB368;
   background-size: cover;
   display: inline-block;
   .footer-box{

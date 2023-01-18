@@ -263,8 +263,8 @@ export default class DefaultHeader extends Vue {
 .header-layout {
  /deep/ .header_menu {
    width: 100%;
-   background-color: #d9b672;
-   border-bottom: 1px solid #cda975;
+   background-color: #2DB368;
+  //  border-bottom: 1px solid #cda975;
    margin-top: 27px;
    > ul {
     width: 1200px;
@@ -317,7 +317,7 @@ export default class DefaultHeader extends Vue {
       &:hover{
         > a  {
           background: #ffffff;
-          color: #d9b672;
+          color: #2DB368;
 
         }
       }

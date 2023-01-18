@@ -237,23 +237,23 @@ export default class insNews extends Vue {
     margin: 0 auto;
     position: absolute;
     top: 210px;
-    transition: all 0.3s;
+    // transition: all 0.3s;
     left: 50%;
     transform: translateX(-50%);
     .innerBoxText{
         text-align: center;
         font-size: 48px;
         font-family: 'SourceHanSans-Heavy';
-        // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-        // -webkit-background-clip: text;
-        // color: transparent;
-        // width: 310px;
+        background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        -webkit-background-clip: text;
+        color: transparent;
+        width: 310px;
         margin-left: 145px;
-        transition: all 0.3s;
-        background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-        color: #000;
-        padding: 5px 60px;
-        display: table;
+        // transition: all 0.3s;
+        // background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        // color: #000;
+        // padding: 5px 60px;
+        // display: table;
     }
   }
   .TitleBgNo{
@@ -280,9 +280,9 @@ export default class insNews extends Vue {
       margin-bottom: 10px;
       font-size: 36px;
       font-family: 'SourceHanSans-Heavy';
-      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      -webkit-background-clip: text;
-      color: transparent;
+      // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      // -webkit-background-clip: text;
+      color: #d9b672;
       display: flex;
       justify-content: center;
       width: 280px;
@@ -379,18 +379,18 @@ export default class insNews extends Vue {
 }
 .Engap{
   .DetailTitle .TitleBg {
-    top: 60px;
+    top: 40px;
     .innerBoxText{
-      font-size: 38px;
-      // width: 245px;
-      margin-left: 164px;
+      font-size: 34px;
+      width: 245px;
+      margin-left: 245px;
       line-height: 38px;
       word-break: keep-all;
-      // height: 23rem;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-      width: 350px;
+      height: 23rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // width: 350px;
     }
   }
   .PageStyle1 .content > h2{
@@ -422,17 +422,17 @@ export default class insNews extends Vue {
   }
   .Engap{
     .DetailTitle .TitleBg {
-      top: 184px;
+      top: 40px;
       .innerBoxText{
         font-size: 34px;
-        width: 350px;
+        width: 245px;
         margin-left: 200px;
         line-height: 38px;
         word-break: keep-all;
-        // height: 19rem;
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
+        height: 19rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
@@ -459,18 +459,18 @@ export default class insNews extends Vue {
   }
   .Engap{
     .DetailTitle .TitleBg {
-      top: 184px;
+      top: 40px;
       .innerBoxText{
         font-size: 34px;
-        width: 350px;
-        margin-left: 200px;
+        width: 245px;
+        margin-left: 245px;
         line-height: 38px;
         word-break: keep-all;
         box-sizing: border-box;
-        // height: 19rem;
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
+        height: 19rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }

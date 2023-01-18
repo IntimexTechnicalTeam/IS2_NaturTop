@@ -253,7 +253,7 @@ closeDialog () {
                 text-decoration: none;
             }
             a.router-link-active{
-                background-color: #d9b672;
+                background-color: #2DB368;
                 position: relative;
                 &::before{
                     content: '';
@@ -343,7 +343,7 @@ closeDialog () {
 .menu_headerTop{
     .headerTop{
         height: 6rem;
-        background-color: #d9b672;
+        background-color: #2DB368;
         padding: 0 1.5rem;
         .left{
             float: left;

@@ -68,9 +68,10 @@ export default class PkProductListSwiper extends Vue {
 
       font-size: 36px;
       font-family: 'SourceHanSans-Heavy';
-      background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-      -webkit-background-clip: text;
-      color: transparent;
+      // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+      // -webkit-background-clip: text;
+      // color: transparent;
+      color: #d9b672;
       display: flex;
       justify-content: center;
       width: 250px;
@@ -114,16 +115,16 @@ export default class PkProductListSwiper extends Vue {
         text-align: center;
         font-size: 48px;
         font-family: 'SourceHanSans-Heavy';
-        // background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-        // -webkit-background-clip: text;
-        // color: transparent;
-        // width: 310px;
+        background: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        -webkit-background-clip: text;
+        color: transparent;
+        width: 310px;
         margin-left: 124px;
         transition: all 0.3s;
-        background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
-        color: #000;
-        padding: 5px 80px;
-        display: table;
+        // background-image: linear-gradient(90deg, #db9307, #f4de91, #db9307);
+        // color: #000;
+        // padding: 5px 80px;
+        // display: table;
     }
   }
 }
@@ -138,9 +139,9 @@ export default class PkProductListSwiper extends Vue {
     .TitleBg{
       top: 168px;
       .innerBoxText{
-        // width: 310px;
+        width: 310px;
         margin-left: 214px;
-        padding: 5px 60px;
+        // padding: 5px 60px;
       }
     }
     img{
@@ -150,7 +151,7 @@ export default class PkProductListSwiper extends Vue {
   .Engap{
   .DetailTitle .TitleBg .innerBoxText{
       font-size: 36px;
-      margin-left: 200px;
+      margin-left: 214px;
     }
   }
 }
@@ -159,9 +160,9 @@ export default class PkProductListSwiper extends Vue {
     .TitleBg{
       top: 168px;
       .innerBoxText{
-        // width: 310px;
+        width: 310px;
         margin-left: 214px;
-        padding: 5px 60px;
+        // padding: 5px 60px;
       }
     }
     img{
@@ -171,7 +172,7 @@ export default class PkProductListSwiper extends Vue {
   .Engap{
   .DetailTitle .TitleBg .innerBoxText{
     font-size: 36px;
-    margin-left: 200px;
+    margin-left: 214px;
   }
 }
 }

@@ -289,6 +289,9 @@ export default class ProductDetail extends Vue {
           margin: 0 auto;
         }
      }
+     h3{
+      padding: 1rem;
+     }
     }
   }
 }

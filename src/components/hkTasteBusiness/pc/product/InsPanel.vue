@@ -431,8 +431,8 @@ export default class Panel extends Vue {
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid #e27368;
-        background-color: #e27368;
+        border: 1px solid #244871;
+        background-color: #244871;
         color: #fff;
         border-radius: 5px;
         transition: .1s;
