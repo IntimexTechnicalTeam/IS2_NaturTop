@@ -24,12 +24,14 @@
     >
       <b v-if="shopCart.Qty">{{shopCart.Qty}}22333333</b>
     </a> -->
-    <div class="top-cart-detail top-window" :class="{ showCart: isShow }">
+    <transition name="slide-fade">
+      <div class="top-cart-detail top-window" v-show="isShow">
       <div class="window-detail-title">
         <span>{{ $t("Shoppingcart.ShoppingcartTitle") }}</span>
       </div>
       <div class="cart-window-content" v-if="shopCart.Qty">
-        <table>
+        <div id="style-4" class="scrollbar">
+          <table>
           <tr>
             <th>{{ $t("Shoppingcart.Product") }}</th>
             <th>{{ $t("Shoppingcart.Quantity") }}</th>
@@ -62,6 +64,7 @@
             </td>
           </tr>
         </table>
+        </div>
 
         <p class="cartSubtotal">
           {{ $t("Shoppingcart.Total") }}:
@@ -82,6 +85,8 @@
       </div>
       <div class="cart-close" @click="closeDialog()"><span>+</span></div>
     </div>
+    </transition>
+
   </div>
 </template>
 
@@ -252,7 +257,7 @@ export default class InsShoppingCart extends Vue {
 .top-window {
   font-family: "Arial";
   position: absolute;
-  z-index: 12;
+  z-index: 120000;
   box-sizing: border-box;
   padding: 14px 14px 30px 14px;
   background-color: #fff;
@@ -260,11 +265,24 @@ export default class InsShoppingCart extends Vue {
   top: 5rem;
 }
 
+// .top-cart-detail {
+//   display: none;
+//   position: fixed;
+//   top: 0px;
+//   right: -480px;
+//   width: 480px;
+//   background-color: #f6f6f6;
+//   overflow: auto;
+//   overflow-x: hidden;
+//   padding-bottom: 30px;
+//   border: 1px solid #eee;
+//   transition: all 1s;
+// }
 .top-cart-detail {
-  display: none;
   position: fixed;
   top: 0px;
-  right: -480px;
+  right: 0;
+  // right: -480px;
   width: 480px;
   background-color: #f6f6f6;
   overflow: auto;
@@ -409,12 +427,44 @@ export default class InsShoppingCart extends Vue {
   text-decoration: none;
   background: @base_color;
 }
+// .cart-window-content {
+//   overflow-x: hidden;
+//   max-height: 500px;
+//   overflow-y: scroll;
+// }
 .cart-window-content {
-  overflow-x: hidden;
-  max-height: 500px;
-  overflow-y: scroll;
+  .scrollbar{
+      max-height: 440px;
+      overflow: auto;
+      overflow-x: hidden;
+    }
 }
 .window-cart-num, .window-cart-price{
   font-size: 16px;
+}
+#style-4::-webkit-scrollbar-track {
+  // box-shadow:inset 0 0 3px rgba(212,121,77,1);
+  background-color: transparent;
+}
+#style-4::-webkit-scrollbar {
+  width: 3px;
+  background-color: transparent;
+}
+#style-4::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  // border: 2px solid rgba(0, 0, 0, 0.3);
+}
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateY(-10px);
+  opacity: 0;
 }
 </style>

@@ -3,13 +3,14 @@
     <div style="display:none;">{{ shopCarts.then((result) => {this.shopCart = result.ShopCart;}) }}</div>
     <a href="javascript:;" class="handle-icon cart-icon handle-icon-window"  @click="toggleDialog" v-show="hiddenClick">
       <b v-if="shopCart.Qty">{{shopCart.Qty}}</b>
-      <p class="window-top" v-show="isShow"></p>
+      <!-- <p class="window-top" v-show="isShow"></p> -->
     </a>
     <a href="javascript:;" class="handle-icon cart-icon handle-icon-window" v-show="!hiddenClick">
       <b v-if="shopCart.Qty">{{shopCart.Qty}}</b>
-      <p class="window-top" v-show="isShow"></p>
+      <!-- <p class="window-top" v-show="isShow"></p> -->
     </a>
-    <div class="top-cart-detail top-window" v-show="isShow">
+    <transition name="slide-fade">
+      <div class="top-cart-detail top-window" v-show="isShow">
 
       <div class="window-detail-title">
         <b></b>
@@ -17,7 +18,8 @@
         <b></b>
       </div>
       <div class="cart-window-content" v-if="shopCart.Qty">
-        <table>
+        <div id="style-4" class="scrollbar">
+          <table>
             <tr>
                 <th >{{$t('Shoppingcart.Product')}}</th>
                 <th>{{$t('Shoppingcart.Quantity')}}</th>
@@ -37,6 +39,8 @@
                 <td><b class="cart-delete" @click="removeItem(one.Id)">X</b></td>
             </tr>
         </table>
+        </div>
+
         <p class="cartSubtotal"><b>{{shopCart.DefaultCurrency.Code}} {{(shopCart.TotalAmount) | PriceFormat}}</b></p>
         <p class="goToCart" @click="closeDialog"><router-link to="/account/shoppingcart">{{$t('Shoppingcart.ProceedToCheckout')}}</router-link></p>
       </div>
@@ -45,6 +49,8 @@
         <p>{{$t('Shoppingcart.None')}}</p>
       </div>
     </div>
+    </transition>
+
   </div>
 </template>
 
@@ -216,10 +222,15 @@ export default class InsShoppingCart extends Vue {
   line-height: 40px;
 }
 .cart-window-content{
-    overflow-x: hidden;
-    max-height: 500px;
-    overflow-y: scroll;
-    padding: .5rem;
+    // overflow-x: hidden;
+    // max-height: 500px;
+    // overflow-y: scroll;
+    // padding: .5rem;
+    .scrollbar{
+      max-height: 410px;
+      overflow: auto;
+      overflow-x: hidden;
+    }
 }
 .cart-window-content table {
   width: 100%;
@@ -328,5 +339,30 @@ export default class InsShoppingCart extends Vue {
     font-weight: bold;
     border: @base_color 1px solid;
     text-decoration: none;
+}
+#style-4::-webkit-scrollbar-track {
+  // box-shadow:inset 0 0 3px rgba(212,121,77,1);
+  background-color: transparent;
+}
+#style-4::-webkit-scrollbar {
+  width: 3px;
+  background-color: transparent;
+}
+#style-4::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  // border: 2px solid rgba(0, 0, 0, 0.3);
+}
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .1s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateY(-10px);
+  opacity: 0;
 }
 </style>
