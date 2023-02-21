@@ -13,6 +13,10 @@
                 <div class="btn-box">
                   <ElButton type="primary" @click="CheckPwdSubmit('pwdForm')" class="resetBtn" style="width:100%;margin-left:0%;">{{$t('DeliveryAddress.SaveBtn')}}</ElButton>
                 </div>
+
+                <div class="btn-box">
+                  <ElButton type="primary" @click="resetForm('pwdForm')" class="reset-btn" style="width:100%;margin-left:0%;">{{$t('DeliveryAddress.ResetBtn')}}</ElButton>
+                </div>
               </div>
             </InsForm>
           </div>
@@ -118,6 +122,10 @@ export default class InsModifyPassword extends Vue {
         }
       });
     });
+  }
+
+  resetForm(formName) {
+    (this.$refs[formName] as InsForm).reset();
   }
 }
 </script>
@@ -230,5 +238,12 @@ export default class InsModifyPassword extends Vue {
     width: 60%;
     float: left;
     margin-left: 25%;
+}
+.MemberInfoMain .reset-btn{
+    color: @buy_color;
+    background: #fff;
+    border: 1px solid @buy_color;
+    box-sizing: border-box;
+    margin-top: 30px;
 }
 </style>

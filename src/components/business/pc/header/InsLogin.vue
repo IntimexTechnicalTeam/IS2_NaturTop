@@ -1,62 +1,67 @@
 <template>
   <div class="handle-one" v-click-outside="closeDialog">
     <a href="javascript:;" class="handle-icon member-icon handle-icon-window" @click="toggleDialog"></a>
-    <div class="top-member-detail top-window" v-if="isShow && !isLogin">
-      <p class="window-top"></p>
-      <div class="window-detail-title">
-        <b></b>
-        <span>{{$t('Login.LoginTitle')}}</span>
-        <b></b>
+    <transition name="slide-fade">
+      <div class="top-member-detail top-window" v-if="isShow && !isLogin">
+        <p class="window-top"></p>
+        <div class="window-detail-title">
+          <b></b>
+          <span>{{$t('Login.LoginTitle')}}</span>
+          <b></b>
+        </div>
+        <ElForm :model="loginForm" status-icon :rules="rules" ref="loginForm" class="loginForm">
+          <FormItem prop="user">
+            <ElInput v-model="loginForm.user" autocomplete="off" :placeholder="$t('Login.EnterEmail')" @keyup.enter.native="submitForm"></ElInput>
+          </FormItem>
+          <FormItem prop="password">
+            <ElInput type="password" v-model="loginForm.password" autocomplete="off" :placeholder="$t('Register.UserRegPassword')" @keyup.enter.native="submitForm"></ElInput>
+          </FormItem>
+          <FormItem>
+            <ElButton class="loginBtn" @click="submitForm">{{$t('Login.doLogin')}}</ElButton>
+            <a to="/account/forgetPassword" @click="ToUrl('/account/forgetPassword')"><ElButton>{{$t('Forgetpassword.ForgetPassword')}}</ElButton></a>
+            <a to="/account/login" @click="ToUrl('/account/login')"><ElButton>{{$t('Register.RegisterBtn')}}</ElButton></a>
+          </FormItem>
+        </ElForm>
+        <div class="facebook_login" @click="fbLogin" v-if="!isIe">
+          <img src="/static/facebook.png" />
+          <span>{{$t('Login.FaceBookUse')}}</span>
+        </div>
       </div>
-      <ElForm :model="loginForm" status-icon :rules="rules" ref="loginForm" class="loginForm">
-        <FormItem prop="user">
-          <ElInput v-model="loginForm.user" autocomplete="off" :placeholder="$t('Login.EnterEmail')" @keyup.enter.native="submitForm"></ElInput>
-        </FormItem>
-        <FormItem prop="password">
-          <ElInput type="password" v-model="loginForm.password" autocomplete="off" :placeholder="$t('Register.UserRegPassword')" @keyup.enter.native="submitForm"></ElInput>
-        </FormItem>
-        <FormItem>
-          <ElButton class="loginBtn" @click="submitForm">{{$t('Login.doLogin')}}</ElButton>
-          <a to="/account/forgetPassword" @click="ToUrl('/account/forgetPassword')"><ElButton>{{$t('Forgetpassword.ForgetPassword')}}</ElButton></a>
-          <a to="/account/login" @click="ToUrl('/account/login')"><ElButton>{{$t('Register.RegisterBtn')}}</ElButton></a>
-        </FormItem>
-      </ElForm>
-      <div class="facebook_login" @click="fbLogin" v-if="!isIe">
-        <img src="/static/facebook.png" />
-        <span>{{$t('Login.FaceBookUse')}}</span>
-      </div>
-    </div>
+    </transition>
 
-    <div class="top-member-detail top-window top-window-after" v-if="isShow && isLogin">
-      <p class="window-top"></p>
-      <div class="window-detail-title">
-        <span>{{$t('Account.Welcome')}} {{user}}</span>
+    <transition name="slide-fade">
+      <div class="top-member-detail top-window top-window-after" v-if="isShow && isLogin">
+        <p class="window-top"></p>
+        <div class="window-detail-title">
+          <span>{{$t('Account.Welcome')}} {{user}}</span>
+        </div>
+        <div class="login-after-select">
+          <p>
+            <router-link to="/account/memberInfo" @click.native="closeDialog">{{$t('Account.MemberInformation')}}</router-link>
+          </p>
+          <p>
+            <router-link to="/account/notification" @click.native="closeDialog">{{$t('Account.MyMessages')}}</router-link>
+          </p>
+          <p>
+            <router-link to="/account/myFavorite" @click.native="closeDialog">{{$t('Account.MyFavorite')}}</router-link>
+          </p>
+          <p>
+          <router-link to="/order/List" @click.native="closeDialog">{{$t('Account.MyOrder')}}</router-link>
+          </p>
+          <!--<p><a href="/account/MyCoupon">我的優惠券 My E-Coupon</a></p>-->
+          <p>
+            <router-link to="/account/deliveryAddress" @click.native="closeDialog">{{$t('Account.DeliveryAddress')}}</router-link>
+          </p>
+          <p>
+            <router-link to="/account/mycoupon" @click.native="closeDialog">{{$t('MyCoupon.MyCoupon')}}</router-link>
+          </p>
+          <p class="logout">
+            <a href="javascript:;" @click="Logout()">{{$t('Account.Logout')}}</a>
+          </p>
+        </div>
       </div>
-      <div class="login-after-select">
-        <p>
-          <router-link to="/account/memberInfo" @click.native="closeDialog">{{$t('Account.MemberInformation')}}</router-link>
-        </p>
-        <p>
-          <router-link to="/account/notification" @click.native="closeDialog">{{$t('Account.MyMessages')}}</router-link>
-        </p>
-        <p>
-          <router-link to="/account/myFavorite" @click.native="closeDialog">{{$t('Account.MyFavorite')}}</router-link>
-        </p>
-        <p>
-         <router-link to="/order/List" @click.native="closeDialog">{{$t('Account.MyOrder')}}</router-link>
-        </p>
-        <!--<p><a href="/account/MyCoupon">我的優惠券 My E-Coupon</a></p>-->
-        <p>
-           <router-link to="/account/deliveryAddress" @click.native="closeDialog">{{$t('Account.DeliveryAddress')}}</router-link>
-        </p>
-        <p>
-           <router-link to="/account/mycoupon" @click.native="closeDialog">{{$t('MyCoupon.MyCoupon')}}</router-link>
-        </p>
-        <p class="logout">
-          <a href="javascript:;" @click="Logout()">{{$t('Account.Logout')}}</a>
-        </p>
-      </div>
-    </div>
+    </transition>
+
   </div>
 </template>
 <script lang="ts">
@@ -391,7 +396,7 @@ export default class InsLogin extends Vue {
 .top-member-detail .window-top {
   right: 40px;
   position: absolute;
-  right: 35px;
+  right: 42px;
   top: -18px;
   width: 24px;
   height: 18px;
@@ -510,5 +515,16 @@ export default class InsLogin extends Vue {
 .input-text::-webkit-input-placeholder {
   color: #cccccc;
   opacity: 1;
+}
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateY(-10px);
+  opacity: 0;
 }
 </style>

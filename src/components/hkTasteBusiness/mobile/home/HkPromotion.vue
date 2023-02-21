@@ -168,6 +168,13 @@ export default class HkPromotion extends Vue {
         margin: 0 auto;
         background-size: contain;
       }
+    /deep/ .in_pdWindow_item_text p:first-child{
+          overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        word-break: break-word;
+    }
   }
   .InnerSide{
     width: 85%;

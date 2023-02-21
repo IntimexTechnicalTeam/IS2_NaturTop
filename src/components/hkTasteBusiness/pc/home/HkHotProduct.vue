@@ -142,6 +142,7 @@ export default class PkHotProduct extends Vue {
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
+
     }
     /deep/ .swiper-container{
       width: 100%;
@@ -155,6 +156,13 @@ export default class PkHotProduct extends Vue {
       border: 2px solid #ebd9b6;
     border-radius: 6px;
     overflow: hidden;
+      .in_pdWindow_item_text p:first-child{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        word-break: break-word;
+      }
     }
     .swiper-button-prev, .swiper-button-next{
         width: 20px;

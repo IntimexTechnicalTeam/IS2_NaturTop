@@ -2,14 +2,17 @@
     <div class="memberlogin" v-click-outside="closeDialog">
       <div class="menberCentral" @click="menberCentral">
         <img class="showMenberCentral" src="/images/mobile/Mobile-index_01.png">
-        <div class="lang_flow" v-show="showMenberCentral" @click="memberCentral">
-            <div data-to="/account/memberInfo" class="ii">{{$t('Account.MemberInformation')}}</div>
-            <div data-to="/account/notification" class="ii">{{$t('Account.MyMessages')}}</div>
-            <div data-to="/order/List" class="ii">{{$t('Account.MyOrder')}}</div>
-            <div data-to="/account/deliveryAddress" class="ii">{{$t('Account.DeliveryAddress')}}</div>
-            <div data-to="/account/mycoupon" class="ii">{{$t('MyCoupon.MyCoupon')}}</div>
-            <div class="ii" @click="logout">{{$t('Account.Logout')}}</div>
-        </div>
+        <transition name="slide-fade">
+          <div class="lang_flow" v-show="showMenberCentral" @click="memberCentral">
+              <div data-to="/account/memberInfo" class="ii">{{$t('Account.MemberInformation')}}</div>
+              <div data-to="/account/notification" class="ii">{{$t('Account.MyMessages')}}</div>
+              <div data-to="/order/List" class="ii">{{$t('Account.MyOrder')}}</div>
+              <div data-to="/account/deliveryAddress" class="ii">{{$t('Account.DeliveryAddress')}}</div>
+              <div data-to="/account/mycoupon" class="ii">{{$t('MyCoupon.MyCoupon')}}</div>
+              <div class="ii" @click="logout">{{$t('Account.Logout')}}</div>
+          </div>
+        </transition>
+
       </div>
     </div>
 </template>
@@ -82,4 +85,15 @@ export default class InsLangSwitch extends Vue {
       display: block;
     }
   }
+  .slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .1s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateY(-10px);
+  opacity: 0;
+}
 </style>

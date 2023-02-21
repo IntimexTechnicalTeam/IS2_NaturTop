@@ -21,7 +21,7 @@
         <div id="style-4" class="scrollbar">
           <table>
             <tr>
-                <th >{{$t('Shoppingcart.Product')}}</th>
+                <th>{{$t('Shoppingcart.Product')}}</th>
                 <th>{{$t('Shoppingcart.Quantity')}}</th>
                 <th>{{$t('Shoppingcart.Price')}}</th>
                 <th></th>

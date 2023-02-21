@@ -354,7 +354,7 @@ this.error =
 .input_outer {
   padding-top: 30px;
   .error {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: red;
     position: absolute;
   }

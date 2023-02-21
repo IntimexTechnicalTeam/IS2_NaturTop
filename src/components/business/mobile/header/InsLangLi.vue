@@ -9,13 +9,13 @@
           <div class="langOne curLang">
             <p v-if="currentLang==='C'">繁</p>
             <!-- <p v-if="currentLang==='S'">简</p> -->
-            <p v-if="currentLang==='E'">ENG</p>
+            <!-- <p v-if="currentLang==='E'">ENG</p> -->
             <!-- <span class="langArrow" :class="{'rotate':showList}"></span> -->
             <img class="langArrow" src="/images/mobile/l-Arrow.png" :class="{'rotate':showList}">
           </div>
           <transition name="el-fade-in-linear" >
           <div class="langSelect" v-if="showList">
-            <p v-if="currentLang!=='E'" @click="changeLang('E')">ENG</p>
+            <!-- <p v-if="currentLang!=='E'" @click="changeLang('E')">ENG</p> -->
             <p v-if="currentLang!=='C'" @click="changeLang('C')">繁</p>
             <!-- <p v-if="currentLang!=='S'" @click="changeLang('S')">简</p> -->
           </div>
