@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "skipLibCheck": true, // 阻止Typescript对整个导入的库进行声明文件(扩展名为 .d.ts 的文件)的类型检查
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,

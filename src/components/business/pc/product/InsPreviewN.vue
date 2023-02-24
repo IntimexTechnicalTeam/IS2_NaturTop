@@ -4,26 +4,24 @@
             <img :src="isClick?AttrImg:CurrentPic" @click="viewImg(currentIndex)">
           </div>
         <div class="swiper-father">
-          <swiper :options="SwiperOption" ref="mySwiper" style="z-index:1000;">
-            <swiperSlide v-for="(page,idx) in ShowItems" :key="idx">
+          <swiper :options="SwiperOptionN" ref="mySwiper" style="z-index:1000;">
+            <swiperSlide v-for="(item,idx) in ShowItems" :key="idx">
               <div class="in_slider_page_container">
-                <div class="in_slider_page_item" v-for="(item,index) in page" :key="index">
-                  <div class="in_slider_page_item" v-if="!item.Virtual" :class="{ 'item':!item.Virtual }">
-                    <img :src="item.Src[0]" :data-key="item.Src[0]" @error="loadError" @click="getImg(item.Src[0],index)"/>
+                <div class="in_slider_page_item" v-if="!item.Virtual" :class="{ 'item':!item.Virtual }">
+                    <img :src="item.Src[1]" :data-key="item.Src[1]" @error="loadError" @click="getImg(item.Src[0],idx)"/>
                   </div>
-                </div>
               </div>
             </swiperSlide>
           </swiper>
-            <div class="swiper-button-prev" slot="button-prev"></div>
-            <div class="swiper-button-next" slot="button-next"></div>
+            <div class="swiper-button-prev swiper-button-prevN" slot="button-prev"></div>
+            <div class="swiper-button-next swiper-button-nextN" slot="button-next"></div>
           </div>
           <div v-if="!isClick">
-            <Viewer :images="ShowItems[0]"
+            <Viewer :images="ShowItems"
                       class="viewer" ref="viewer"
                       @inited="inited"
               >
-              <img v-for="(item,index) in ShowItems[0]" :src="item.Src[0]" :key="index" :alt="ProductTitleName" class="PreViewimage">
+              <img v-for="(item,index) in ShowItems" :src="item.Src" :key="index" :alt="ProductTitleName" class="PreViewimage">
               </Viewer>
           </div>
             <div v-else>
@@ -62,8 +60,8 @@ export default class InsPreview extends Vue {
   // data
   private mirrorShow: boolean = false;
   private currentIndex = 0;
-  private InnerItems: ImgItem[] = [];
-  private ShowItems: ImgItem[][] = [];
+  // private InnerItems: ImgItem[] = [];
+  private ShowItems: ImgItem[] = [];
   @Prop() private readonly ProductTitleName!: string[];
   private MiddlePic = {
     top: 0,
@@ -71,17 +69,17 @@ export default class InsPreview extends Vue {
     right: 0,
     bottom: 0
   };
-SwiperOption: object = {
+SwiperOptionN: object = {
     // pagination: {
     //   el: '.swiper-pagination',
     //   clickable: true
     // },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    }
-    // slidesPerColumn: 1,
-    // slidesPerView: 4,
+      nextEl: '.swiper-button-next.swiper-button-nextN',
+      prevEl: '.swiper-button-prev.swiper-button-prevN'
+    },
+    slidesPerColumn: 1,
+    slidesPerView: 4
   };
   private TranslateM: string = '';
   private MirrorImgM: string = '';
@@ -121,22 +119,22 @@ SwiperOption: object = {
     }
     this.$store.dispatch('setNormalImg', this.imgList[0][0]);
     this.CurrentPic = this.imgList[0][0];
-    this.InnerItems = [];
+    // this.InnerItems = [];
     this.ShowItems = [];
     this.imgList.forEach(element => {
-      this.InnerItems.push(new ImgItem(element));
+      this.ShowItems.push(new ImgItem(element));
     });
-    while (this.InnerItems.length > 0) {
-      this.ShowItems.push(this.InnerItems.splice(0, this.pageNum));
-    }
-    while (
-      this.ShowItems.length > 0 &&
-      this.ShowItems[this.ShowItems.length - 1].length < this.pageNum
-    ) {
-      this.ShowItems[this.ShowItems.length - 1].push(
-        new ImgItem('', true)
-      );
-    }
+    // while (this.InnerItems.length > 0) {
+    //   this.ShowItems.push(this.InnerItems.splice(0, this.pageNum));
+    // }
+    // while (
+    //   this.ShowItems.length > 0 &&
+    //   this.ShowItems[this.ShowItems.length - 1].length < this.pageNum
+    // ) {
+    //   this.ShowItems[this.ShowItems.length - 1].push(
+    //     new ImgItem('', true)
+    //   );
+    // }
   }
  inited(Viewer) {
     this.$viewer = Viewer;
@@ -229,7 +227,7 @@ SwiperOption: object = {
     position: relative;
   }
   .swiper-container{
-    width: 90%;
+    width: 88%;
     margin: 0 auto;
     flex-wrap: wrap;
   }
