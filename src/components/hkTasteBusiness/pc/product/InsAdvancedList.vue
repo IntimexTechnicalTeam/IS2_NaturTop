@@ -91,7 +91,7 @@ export default class InsAdvancedSearch extends Vue {
         console.log(this.selectedCats, this.paramCats, '全选目录 999999');
       }
 
-      history.pushState(`${this.$route.path}?attrs=${JSON.stringify(this.selectedAttrs)}&catalogs=${JSON.stringify(this.selectedCats)}&type=${this.routerType}`, '', '');
+      window.history.replaceState(`${this.$route.path}?attrs=${JSON.stringify(this.selectedAttrs)}&catalogs=${JSON.stringify(this.selectedCats)}&type=${this.routerType}`, '', '');
       this.$emit('advancedChange', this.selectedAttrs, this.paramCats);
       this.init = true;
     }
@@ -139,7 +139,7 @@ export default class InsAdvancedSearch extends Vue {
       //   this.paramCats = [];
       // }
 
-      history.pushState(`${this.$route.path}?attrs=${JSON.stringify(this.selectedAttrs)}&catalogs=${JSON.stringify(this.selectedCats)}&type=1`, '', '');
+      window.history.replaceState(`${this.$route.path}?attrs=${JSON.stringify(this.selectedAttrs)}&catalogs=${JSON.stringify(this.selectedCats)}&type=1`, '', '');
       this.$emit('advancedChange', this.selectedAttrs, this.paramCats);
     }
 
@@ -173,7 +173,7 @@ export default class InsAdvancedSearch extends Vue {
         });
       });
 
-      history.pushState(`${this.$route.path}?attrs=${JSON.stringify(this.selectedAttrs)}&catalogs=${JSON.stringify(this.selectedCats)}&type=1`, '', '');
+      window.history.replaceState(`${this.$route.path}?attrs=${JSON.stringify(this.selectedAttrs)}&catalogs=${JSON.stringify(this.selectedCats)}&type=1`, '', '');
       this.$emit('advancedChange', this.selectedAttrs, this.paramCats);
     }
 

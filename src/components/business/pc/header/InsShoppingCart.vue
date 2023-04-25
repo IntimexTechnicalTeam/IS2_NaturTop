@@ -43,8 +43,8 @@
               <a href="/">
                 <img :src="one.Product.Img_M" />
               </a>
-              <p style="font-size:16px;">{{ one.Product.Name }}</p>
-              <p v-if="one.AttrName1" class="attrList">
+              <p style="font-size:12px;">{{ one.Product.Name }}</p>
+              <!-- <p v-if="one.AttrName1" class="attrList">
                 {{ one.AttrTypeName1 }}：{{ one.AttrName1 }}
               </p>
               <p v-if="one.AttrName2" class="attrList">
@@ -52,7 +52,7 @@
               </p>
               <p v-if="one.AttrName3" class="attrList">
                 {{ one.AttrTypeName3 }}：{{ one.AttrName3 }}
-              </p>
+              </p> -->
             </td>
             <td width="60" class="window-cart-num">{{ one.Qty }}</td>
             <td width="120" class="window-cart-price">
@@ -434,7 +434,7 @@ export default class InsShoppingCart extends Vue {
 // }
 .cart-window-content {
   .scrollbar{
-      max-height: 440px;
+      max-height: 444px;
       overflow: auto;
       overflow-x: hidden;
     }

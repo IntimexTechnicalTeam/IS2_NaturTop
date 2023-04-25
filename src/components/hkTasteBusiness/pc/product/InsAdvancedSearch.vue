@@ -117,36 +117,36 @@ export default class InsAdvancedSearch extends Vue {
         菜单点击产品库存属性选中任意一个，产品目录全选中，
         菜单点击产品目录选中任意一个，产品库存属性全选中
       */
-      if (!this.routerType && this.selectedAttrs.length) {
-        this.selectedCats = [];
+      // if (!this.routerType && this.selectedAttrs.length) {
+      //   this.selectedCats = [];
 
-        this.catalogs.forEach((element, i) => {
-          this.deCatGIds.push(element.Id);
-          this.selectedCats.push({
-            Id: element.Id,
-            Vals: []
-          });
+      //   this.catalogs.forEach((element, i) => {
+      //     this.deCatGIds.push(element.Id);
+      //     this.selectedCats.push({
+      //       Id: element.Id,
+      //       Vals: []
+      //     });
 
-          element.Children.forEach(item => {
-            this.selectedCats[i].Vals.push(item.Id);
-            this.paramCats.push(item.Id);
-          });
-        });
-      } else if (!this.routerType && this.paramCats.length) {
-        this.selectedAttrs = [];
-        this.deAttrGIds = [];
-        this.attrList.forEach((element, i) => {
-          this.deAttrGIds.push(element.Id);
-          this.selectedAttrs.push({
-            Id: element.Id,
-            Vals: []
-          });
+      //     element.Children.forEach(item => {
+      //       this.selectedCats[i].Vals.push(item.Id);
+      //       this.paramCats.push(item.Id);
+      //     });
+      //   });
+      // } else if (!this.routerType && this.paramCats.length) {
+      //   this.selectedAttrs = [];
+      //   this.deAttrGIds = [];
+      //   this.attrList.forEach((element, i) => {
+      //     this.deAttrGIds.push(element.Id);
+      //     this.selectedAttrs.push({
+      //       Id: element.Id,
+      //       Vals: []
+      //     });
 
-          element.AttrValues.forEach(item => {
-            this.selectedAttrs[i].Vals.push(item.Id);
-          });
-        });
-      }
+      //     element.AttrValues.forEach(item => {
+      //       this.selectedAttrs[i].Vals.push(item.Id);
+      //     });
+      //   });
+      // }
 
       this.$nextTick(() => {
         this.init = true;
