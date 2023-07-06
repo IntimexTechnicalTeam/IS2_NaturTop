@@ -28,8 +28,7 @@
 
         <div class="right-part">
           <img class="QrCode" v-bind:src="result.QrCode" />
-          <p class="msg">
-            {{result.ResultPageTips}}
+          <p class="msg" v-html="result.ResultPageTips">
           </p>
         </div>
       </div>
