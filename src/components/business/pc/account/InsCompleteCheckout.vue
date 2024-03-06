@@ -8,6 +8,7 @@
               <div> <span>{{$t('Order.OrderNumber')}} :</span>  {{Order.InvoiceNO}}</div>
               <div> <span>{{$t('Order.OrderDateTime')}}:</span> {{Order.CreateAt}}</div>
               <div> <span>{{$t('Order.TotalPrice')}} :</span> {{currentCode}}&nbsp;{{(Order.TotalAmount) | PriceFormat}}</div>
+              <div> <span>{{$t('Order.yourshopping')}} <a href="https://api.whatsapp.com/send?phone=85262155461&text=%E6%88%91%E6%83%B3%E6%9F%A5%E8%AF%A2%E4%B8%80%E4%B8%8B" target="_blank">+85262155461</a></span></div>
               <!-- <div> <span>{{$t('Order.OrderStatus')}}:</span> {{Order.StatusName}}</div> -->
               <div v-if="Order.OffLinePay">
                   <a href="javascript:;"  class="evidenceBtn" v-on:click="evidence()">{{$t('Message.Evidence')}}</a>
@@ -28,6 +29,7 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import Order from '@/model/order';
 import InsButton from '@/components/base/mobile/InsButton.vue';
+import { AppId, PayUrl } from '@/sdk/common/SysConst';
 @Component({ components: { InsButton } })
 export default class InsCompleteCheckout extends Vue {
     private Order:Order =new Order();
@@ -67,7 +69,9 @@ export default class InsCompleteCheckout extends Vue {
       });
     }
     pay (pay) {
-      window.location.href = '/PG/pay/' + this.Order.PaymentMethod + '/IS/' + this.orderId;
+      // window.location.href = '/PG/pay/' + this.Order.PaymentMethod + '/IS/' + this.orderId;
+      var url = PayUrl;
+      window.location.href = url.replace('APPID', AppId).replace('ORDER_ID', this.orderId).replace('PAYMENT_TYPE', this.Order.PaymentMethod);
     }
     // get paymentCode () {
     //   return this.$store.state.paymentMethod.Code;
@@ -113,6 +117,10 @@ export default class InsCompleteCheckout extends Vue {
         width: 50%;
         display: inline-block;
         text-align: right;
+      }
+      a{
+        font-size: 1.6rem;
+        color: #2c3e50;
       }
     }
   }

@@ -7,12 +7,18 @@ let param = getArgList();
 if (param === 'dev') {
     apiServer = 'http://api.dev.in-store.hk:84';
     AdminServer = 'http://admin.dev.in-store.hk:84';
+    PayUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
+    RnpUrl = 'https://pg.uat2.intimex.hk:80/pg-uat/trans/rnp/APPID/PAYMENT_TYPE/ORDER_ID';
 } else if (param === 'uat') {
     apiServer = 'https://api.uat2.intimex.hk';
     AdminServer = 'https://admin.uat2.intimex.hk';
+    PayUrl = 'https://pg.eventizer.hk:80/pg-uat/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
+    RnpUrl = 'https://pg.eventizer.hk:80/pg-uat/trans/rnp/APPID/PAYMENT_TYPE/ORDER_ID';
 } else if (param === 'prod') {
     apiServer = 'https://api.uat.in-store.hk';
     AdminServer = 'https://admin.uat.in-store.hk';
+    PayUrl = 'https://pg.eventizer.hk:80/pg/trans/pay/APPID/PAYMENT_TYPE/ORDER_ID';
+    RnpUrl = 'https://pg.eventizer.hk:80/pg/trans/rnp/APPID/PAYMENT_TYPE/ORDER_ID';
 }
 
 function getArgList() {
@@ -26,19 +32,19 @@ function getArgList() {
     return mode;
 };
 let p = './src/sdk/common/ApiAndAdminServer.ts';
-fs.writeFileSync(p, 'module.exports = { apiServer: \'' + apiServer + '\', AdminServer: \'' + AdminServer + '\' };\r\n');
+// fs.writeFileSync(p, 'module.exports = { apiServer: \'' + apiServer + '\', AdminServer: \'' + AdminServer + '\' };\r\n');
+fs.writeFileSync(p, 'module.exports = { apiServer: \'' + apiServer + '\', AdminServer: \'' + AdminServer + '\', PayUrl: \'' + PayUrl + '\', RnpUrl: \'' + RnpUrl + '\' };\r\n');
 
 // 区分運行環境，設置CND
-const JS_CDN = process.env.NODE_ENV === 'development' ?
-    [
-        // 本地運行
-        'http://pm.dev.in-store.hk:84/Scripts/jquery-1.12.4.min.js',
-        'http://pm.dev.in-store.hk:84/scripts/store/regnpay-2.0.js'
-    ] : [
-        // 發佈環境運行
-        '/ClientResources/Script/jquery-1.12.4.min.js',
-        '/ClientResources/Script/regnpay-2.0.js'
-    ];
+const JS_CDN = process.env.NODE_ENV === 'development' ? [
+    // 本地運行
+    'http://pm.dev.in-store.hk:84/Scripts/jquery-1.12.4.min.js',
+    'http://pm.dev.in-store.hk:84/scripts/store/regnpay-2.0.js'
+] : [
+    // 發佈環境運行
+    '/ClientResources/Script/jquery-1.12.4.min.js',
+    '/ClientResources/Script/regnpay-2.0.js'
+];
 
 module.exports = {
     chainWebpack: config => {

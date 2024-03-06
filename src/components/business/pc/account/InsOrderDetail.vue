@@ -97,6 +97,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import { Row, Col as ElCol, Card, Button as ElButton } from 'element-ui';
+import { AppId, PayUrl } from '@/sdk/common/SysConst';
 @Component({
   components: {
     accountHeader: () => import('@/components/hkTasteBusiness/pc/account/accountHeader.vue'),
@@ -124,7 +125,9 @@ export default class InsOrderDetail extends Vue {
   }
   // 支付打开页面
   PayNow (order) {
-    window.location.href = '/PG/pay/' + order.PaymentMethod + '/IS/' + order.OrderId;
+    // window.location.href = '/PG/pay/' + order.PaymentMethod + '/IS/' + order.OrderId;
+    var url = PayUrl;
+    window.location.href = url.replace('APPID', AppId).replace('ORDER_ID', order.OrderId).replace('PAYMENT_TYPE', order.PaymentMethod);
   }
   // 上传凭据
   Evidence (val) {

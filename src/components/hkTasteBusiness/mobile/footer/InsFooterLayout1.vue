@@ -58,7 +58,7 @@
           </div>
     </div>
     <div class="footerCpy">
-            <p>Copyright {{currentYear}} © Natur Top Powerd by Eventizer
+            <p>Copyright {{currentYear}} © Wellfit Resources Limited Powerd by Eventizer
             <a href="https://eventizer.hk/" target="_blank">
               <img src="/images/mobile/footerlogo.png">
             </a>

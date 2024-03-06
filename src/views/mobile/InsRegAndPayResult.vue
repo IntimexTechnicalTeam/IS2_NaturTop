@@ -73,6 +73,7 @@
 <script lang="ts" scoped>
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import printJS from 'print-js';
+import { AppId, RnpUrl } from '@/sdk/common/SysConst';
 @Component
 export default class Result extends Vue {
     result:any={
@@ -127,7 +128,9 @@ export default class Result extends Vue {
         this.$Api.regAndPay.savePayMethod(this.paymentMethod.Id, this.result.Id).then(result => {
           if (result.data.Succeeded) {
             // this.$router.push({ path: '/payment/' + this.paymentMethod.Code + '/' + this.result.Id });
-            window.location.href = '/PG/pay/' + this.paymentMethod.Code + '/ISRNP/' + this.result.Id;
+            // window.location.href = '/PG/pay/' + this.paymentMethod.Code + '/ISRNP/' + this.result.Id;
+            var url = RnpUrl;
+            window.location.href = url.replace('APPID', AppId).replace('ORDER_ID', this.result.Id).replace('PAYMENT_TYPE', this.paymentMethod.Code);
           } else {
             // alert(result.data.Message);
             // this.$Confirm('', '支付失败，请稍后再试！');

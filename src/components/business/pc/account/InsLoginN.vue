@@ -236,6 +236,14 @@ export default class InsLoginN extends Vue {
 }
 </style>
 <style lang="less" scoped>
+/deep/ .input_outer {
+  .input_warpper .input_main {
+    position: relative;
+  }
+  .error {
+    font-size: 14px;
+  }
+}
 .insLogin_warrper{
     width: 1200px;
     margin: 100px auto;

@@ -4,6 +4,8 @@ const AppId = '7cd126ce-a954-4958-8a88-25ffe2260999';
 // let AdminServer = 'https://admin.uat.intimex.hk'; // UAT
 let AdminServer = ana.AdminServer;
 let apiServer = ana.apiServer;
+let PayUrl = ana.PayUrl;
+let RnpUrl = ana.RnpUrl;
 module.exports = {
   // instore app id admin的id
   AppId: AppId, // hongkong taste
@@ -19,6 +21,10 @@ module.exports = {
   // admin server url, for login management platform 統一配置admin服務器
 
   AdminServer: AdminServer,
+  // 正常支付地址
+  PayUrl: PayUrl,
+  // Regnpay支付地址
+  RnpUrl: RnpUrl,
   // url '/admin' auto open admin tab
   AutoOpenAdmin: true,
   // admin login url 統一配置admin登錄地址

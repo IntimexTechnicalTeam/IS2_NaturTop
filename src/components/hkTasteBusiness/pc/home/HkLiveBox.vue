@@ -207,6 +207,7 @@ export default class PkLiveBox extends Vue {
       border-radius: 5px;
       width: 278px;
       height: 469px;
+      overflow: hidden;
       img{
         height: 100%;
       }

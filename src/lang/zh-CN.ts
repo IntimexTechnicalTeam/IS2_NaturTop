@@ -339,7 +339,8 @@ export default {
     Discount: '優惠價格',
     Cancel: '取消',
     Paid: '已付款',
-    Unpaid: '未付款'
+    Unpaid: '未付款',
+    yourshopping: '感謝您的光臨，下單后一天内會有專人與您聯係。如沒有人與您聯係，請您聯係whatsapp：'
   },
   Concessions: {
     Cannot: '優惠券与优惠码不可不可同时使用'

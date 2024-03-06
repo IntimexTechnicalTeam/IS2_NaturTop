@@ -339,8 +339,8 @@ export default {
     Discount: 'Discount Price',
     Cancel: 'Cancel',
     Paid: 'Paid',
-    Unpaid: 'Unpaid'
-
+    Unpaid: 'Unpaid',
+    yourshopping: 'Thank you for your shopping. A dedicated person will contact you within one day after placing your order. If no one contacts you, please contact whatsapp：'
   },
   Payment: {
     ReturnHomePage: 'Return HomePage',

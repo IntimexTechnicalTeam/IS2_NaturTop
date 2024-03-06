@@ -89,24 +89,26 @@ export default class InsResetPwd extends Vue {
     var pwd = this.pwdForm.newPassword;
     var that = this;
     (that.$refs.pwdForm as InsForm).validate(valid => {
-      that.$Api.member.updatePwdFM(that.id, that.code, pwd).then((result) => {
-        if (result.Succeeded) {
-          that.$message({
-            message: result.Message,
-            type: 'success',
-            customClass: 'messageboxNoraml'
-          });
-          setTimeout(() => {
-            that.$router.push('/account/login');
-          }, 2000);
-        } else {
-          that.$message({
-            message: result.Message,
-            type: 'error',
-            customClass: 'messageboxNoraml'
-          });
-        }
-      });
+      if (valid) {
+        that.$Api.member.updatePwdFM(that.id, that.code, pwd).then((result) => {
+          if (result.Succeeded) {
+            that.$message({
+              message: result.Message,
+              type: 'success',
+              customClass: 'messageboxNoraml'
+            });
+            setTimeout(() => {
+              that.$router.push('/account/login');
+            }, 2000);
+          } else {
+            that.$message({
+              message: result.Message,
+              type: 'error',
+              customClass: 'messageboxNoraml'
+            });
+          }
+        });
+      }
     });
   }
 }

@@ -146,6 +146,7 @@ export default class InsMyFavorite extends Vue {
 #main-content {
   width: 1200px;
   margin: 0 auto;
+  padding-bottom: 50px;
 }
 .login-register-title {
   float: left;

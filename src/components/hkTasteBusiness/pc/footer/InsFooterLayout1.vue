@@ -63,7 +63,7 @@
           </div>
         </div>
         <p class="footercopy">
-             <span>Copyright {{currentYear}} © Natur Top Powerd by Eventizer
+             <span>Copyright {{currentYear}} © Wellfit Resources Limited Powerd by Eventizer
                <a href="https://eventizer.hk/" target="_blank">
                <img src="/images/pc/footerlogo.png">
                </a>
@@ -227,7 +227,7 @@ export default class InsFooterLayout1 extends Vue {
 .footerLeft > ul >li{
     // width: 100%;
     // line-height: 30px;
-        padding: 0 26px;
+        padding: 0 18px;
 }
 .footerLeft > ul >li >a{
     font-size:20px;

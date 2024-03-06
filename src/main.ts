@@ -22,6 +22,7 @@ import vueAxios from 'vue-axios';
 // import VueI18n from 'vue-i18n';
 import i18n from '@/lang';
 
+import 'animate.css';
 import Auth from './sdk/common/Auth';
 import Cookie from 'js-cookie';
 import ElementUI from 'element-ui';

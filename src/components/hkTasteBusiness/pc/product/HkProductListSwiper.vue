@@ -46,6 +46,12 @@ export default class PkProductListSwiper extends Vue {
 }
 </script>
 <style lang="less" scoped>
+.BannerImg{
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
 .productSearchSwiper{
   position: relative;
 }

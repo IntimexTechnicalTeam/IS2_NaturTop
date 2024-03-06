@@ -48,7 +48,7 @@
             <p class="couponRemark">{{item.Remark}}</p>
           </ElCol>
           <ElCol :md="12" :xs="12">
-            {{$t('MyCoupon.PeriodOfValidity')}}: {{item.EffectiveDate}} - {{item.ExpiryDate}}
+            {{$t('MyCoupon.PeriodOfValidity')}}: {{item.EffectiveDate.slice(0,10)}} - {{item.ExpiryDate.slice(0,10)}}
             <span
               class="coupon-status"
               :style="{background:(item.IsUsed == false && item.IsExpiry==false?'#000':'#ccc')}"
